@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Art — Karen Stewart Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF6EF; --warm-white: #FFFDF9; --charcoal: #1C1A18; --ink: #2E2B26;
+      --muted: #7A756C; --coral: #E8614A; --coral-light: #FDEAE6; --teal: #2A8C7A;
+      --teal-light: #E0F5F1; --gold: #D4A84B; --gold-light: #FDF5E3;
+      --lavender: #8B6BB1; --lavender-light: #F0EAF8; --rose: #D4607A; --rose-light: #FDEAF0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(250,246,239,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(28,26,24,0.08); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--coral); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral); }
+    .nav-cta { background: var(--charcoal); color: var(--cream) !important; padding: 0.55rem 1.4rem; border-radius: 100px; }
+    .nav-cta:hover { background: var(--coral) !important; }
+
+    .page-hero { padding: 140px 5rem 5rem; background: var(--teal); display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: end; }
+    .breadcrumb { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 1.2rem; }
+    .breadcrumb a { color: rgba(255,255,255,0.8); text-decoration: none; }
+    .breadcrumb a:hover { color: white; }
+    .page-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.15); color: white; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.2rem; width: fit-content; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 900; line-height: 1.08; color: white; letter-spacing: -0.03em; margin-bottom: 1.2rem; }
+    .page-hero h1 em { font-style: italic; color: var(--gold); }
+    .page-hero-desc { color: rgba(255,255,255,0.75); font-size: 1rem; line-height: 1.7; max-width: 440px; }
+    .page-hero-right { display: flex; flex-direction: column; gap: 1rem; align-items: flex-end; }
+    .filter-row { display: flex; gap: 0.6rem; flex-wrap: wrap; justify-content: flex-end; }
+    .filter-btn { padding: 0.45rem 1.1rem; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.3); background: transparent; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; font-weight: 500; color: white; cursor: pointer; transition: all 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: white; border-color: white; color: var(--teal); }
+    .results-count { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
+
+    .shop-grid-section { padding: 3rem 5rem 6rem; }
+    .shop-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+
+    .product-card { background: white; border-radius: 16px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; position: relative; }
+    .product-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(28,26,24,0.1); }
+    .product-thumb { position: relative; overflow: hidden; }
+    .product-thumb-inner { height: 260px; transition: transform 0.4s; }
+    .product-card:hover .product-thumb-inner { transform: scale(1.04); }
+
+    .d1 { background: linear-gradient(135deg, #2A8C7A 0%, #6A9E7F 50%, #D4A84B 100%); }
+    .d2 { background: linear-gradient(160deg, #D4A84B 0%, #E8614A 60%, #D4607A 100%); }
+    .d3 { background: linear-gradient(140deg, #8B6BB1 0%, #2A8C7A 70%, #6A9E7F 100%); }
+    .d4 { background: linear-gradient(150deg, #E8614A 0%, #D4A84B 50%, #2A8C7A 100%); }
+    .d5 { background: linear-gradient(135deg, #D4607A 0%, #8B6BB1 60%, #D4A84B 100%); }
+    .d6 { background: linear-gradient(160deg, #6A9E7F 0%, #2A8C7A 50%, #D4A84B 100%); }
+    .d7 { background: linear-gradient(135deg, #D4A84B 0%, #8B6BB1 100%); }
+    .d8 { background: linear-gradient(140deg, #2A8C7A 0%, #D4607A 60%, #E8614A 100%); }
+
+    .product-badge { position: absolute; top: 12px; left: 12px; padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+    .badge-digital { background: var(--teal-light); color: var(--teal); }
+    .badge-instant { background: var(--gold-light); color: #8A6010; }
+    .badge-new { background: var(--coral); color: white; }
+    .badge-bundle { background: var(--charcoal); color: var(--cream); }
+
+    .size-pills { display: flex; gap: 0.4rem; margin: 0.6rem 0 0.8rem; flex-wrap: wrap; }
+    .size-pill { padding: 0.2rem 0.6rem; border-radius: 6px; border: 1px solid rgba(28,26,24,0.12); font-size: 0.72rem; color: var(--muted); cursor: pointer; transition: all 0.15s; }
+    .size-pill:hover, .size-pill.active { background: var(--teal); border-color: var(--teal); color: white; }
+
+    .product-wishlist { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; background: rgba(250,246,239,0.9); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: transform 0.2s; }
+    .product-wishlist:hover { transform: scale(1.15); }
+
+    .product-info { padding: 1.2rem 1.4rem 1.4rem; }
+    .product-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.2rem; }
+    .product-medium { font-size: 0.78rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .product-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.8rem; }
+    .product-price { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--teal); }
+    .add-to-cart { padding: 0.45rem 1.1rem; background: var(--teal); color: white; border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+    .add-to-cart:hover { background: var(--charcoal); }
+
+    .instant-banner { margin: 0 5rem 2rem; padding: 1.5rem 2rem; background: var(--teal-light); border-radius: 14px; display: flex; align-items: center; gap: 1rem; }
+    .instant-banner-icon { font-size: 1.8rem; }
+    .instant-banner p { font-size: 0.9rem; color: var(--teal); line-height: 1.5; }
+    .instant-banner strong { color: #0F6E56; }
+
+    footer { background: var(--charcoal); color: rgba(250,246,239,0.5); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); }
+    .footer-logo span { color: var(--coral); font-style: italic; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { color: rgba(250,246,239,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cream); }
+
+    .fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-hero { padding: 110px 2rem 3rem; grid-template-columns: 1fr; }
+      .shop-grid-section { padding: 2rem 2rem 4rem; }
+      .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .instant-banner { margin: 0 2rem 2rem; }
+      footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
+    }
+    @media (max-width: 560px) { .shop-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Karen<span> Stewart</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#shop" class="active">Shop</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Commissions</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-left">
+    <div class="breadcrumb"><a href="index.html">Home</a> › <a href="index.html#shop">Shop</a> › Digital Art</div>
+    <div class="page-tag">Digital Art</div>
+    <h1>Pixels with <em>personality</em></h1>
+    <p class="page-hero-desc">Vibrant digital illustrations available as instant downloads or museum-quality prints. Choose your size — they look gorgeous on any wall.</p>
+  </div>
+  <div class="page-hero-right">
+    <div class="filter-row">
+      <button class="filter-btn active">All</button>
+      <button class="filter-btn">Abstract</button>
+      <button class="filter-btn">Illustrative</button>
+      <button class="filter-btn">Nature</button>
+      <button class="filter-btn">Bundles</button>
+    </div>
+    <div class="results-count">Showing 8 works</div>
+  </div>
+</div>
+
+<div style="padding: 2rem 5rem 0;">
+  <div class="instant-banner">
+    <div class="instant-banner-icon">⚡</div>
+    <p><strong>Instant downloads available!</strong> Many digital pieces can be downloaded immediately after purchase — print at home or at your local print shop.</p>
+  </div>
+</div>
+
+<div class="shop-grid-section">
+  <div class="shop-grid">
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d1"></div>
+        <span class="product-badge badge-instant">Instant DL</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Shoreline Study</div>
+        <div class="product-medium">Digital Print · Nature</div>
+        <div class="size-pills">
+          <span class="size-pill active">8×10</span>
+          <span class="size-pill">11×14</span>
+          <span class="size-pill">16×20</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $18</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d2"></div>
+        <span class="product-badge badge-new">New</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Wanderlust</div>
+        <div class="product-medium">Digital Print · Abstract</div>
+        <div class="size-pills">
+          <span class="size-pill active">8×10</span>
+          <span class="size-pill">11×14</span>
+          <span class="size-pill">16×20</span>
+          <span class="size-pill">24×30</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $22</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d3"></div>
+        <span class="product-badge badge-instant">Instant DL</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Moonrise Valley</div>
+        <div class="product-medium">Digital Print · Illustrative</div>
+        <div class="size-pills">
+          <span class="size-pill active">5×7</span>
+          <span class="size-pill">8×10</span>
+          <span class="size-pill">11×14</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $15</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d4"></div>
+        <span class="product-badge badge-digital">Digital</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Citrus Burst</div>
+        <div class="product-medium">Digital Print · Abstract</div>
+        <div class="size-pills">
+          <span class="size-pill active">8×10</span>
+          <span class="size-pill">16×20</span>
+          <span class="size-pill">24×30</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $20</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d5"></div>
+        <span class="product-badge badge-bundle">Bundle</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Botanical Series — Set of 4</div>
+        <div class="product-medium">Digital Print Bundle · Nature</div>
+        <div class="size-pills">
+          <span class="size-pill active">5×7</span>
+          <span class="size-pill">8×10</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">$48 <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans';">save 20%</span></div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d6"></div>
+        <span class="product-badge badge-instant">Instant DL</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Forest Floor</div>
+        <div class="product-medium">Digital Print · Nature</div>
+        <div class="size-pills">
+          <span class="size-pill active">8×10</span>
+          <span class="size-pill">11×14</span>
+          <span class="size-pill">16×20</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $18</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d7"></div>
+        <span class="product-badge badge-new">New</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Amethyst Sky</div>
+        <div class="product-medium">Digital Print · Abstract</div>
+        <div class="size-pills">
+          <span class="size-pill active">11×14</span>
+          <span class="size-pill">16×20</span>
+          <span class="size-pill">24×30</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">from $25</div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card fade-up">
+      <div class="product-thumb">
+        <div class="product-thumb-inner d8"></div>
+        <span class="product-badge badge-bundle">Bundle</span>
+        <button class="product-wishlist">♡</button>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Abstract Essentials — Set of 6</div>
+        <div class="product-medium">Digital Print Bundle · Abstract</div>
+        <div class="size-pills">
+          <span class="size-pill active">5×7</span>
+          <span class="size-pill">8×10</span>
+        </div>
+        <div class="product-footer">
+          <div class="product-price">$65 <span style="font-size:0.8rem;color:var(--muted);font-family:'DM Sans';">save 25%</span></div>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Karen<span> Stewart</span> Art</div>
+  <ul class="footer-links">
+    <li><a href="index.html#shop">Shop</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Karen Stewart. All rights reserved.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.size-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      pill.closest('.size-pills').querySelectorAll('.size-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
