@@ -735,6 +735,52 @@
       border: 1px solid rgba(0,0,0,0.04);
       background: white;
     }
+
+        /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    .lightbox-title {
+      margin-top: 1.5rem;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
   </style>
 </head>
 <body>
@@ -839,7 +885,7 @@
     <a href="#shop" class="btn-outline" style="white-space:nowrap;">View All Works</a>
   </div>
   <div class="gallery-grid">
-    <div class="gallery-item featured fade-up">
+    <div class="gallery-item featured fade-up" onclick="openLightbox('flight map','Flight Map')">
       <div class="gallery-thumb" style="background-image:url('art/flight\ map.webp'), linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -851,7 +897,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item fade-up">
+    <div class="gallery-item featured fade-up" onclick="openLightbox('lazy boiiiii','Lazy Boiiiii')">
       <div class="gallery-thumb" style="background-image:url('art/lazy\ boiiiii.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -863,7 +909,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item fade-up">
+    <div class="gallery-item featured fade-up" onclick="openLightbox('the glorious robin','The Glorious Robin')">
       <div class="gallery-thumb" style="background-image:url('art/the\ glorious\ robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -875,7 +921,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item fade-up">
+    <div class="gallery-item featured fade-up" onclick="openLightbox('quail','Quail')">
       <div class="gallery-thumb" style="background-image:url('art/quail.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -887,7 +933,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item fade-up">
+    <div class="gallery-item featured fade-up" onclick="openLightbox('signs of spring','Signs of Spring')">
       <div class="gallery-thumb" style="background-image:url('art/signs\ of\ spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -968,7 +1014,7 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Karen<span> Stewart</span> Art</div>
+  <div class="footer-logo">K.Stew</span> Art</div>
   <ul class="footer-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#gallery">Gallery</a></li>
@@ -1089,5 +1135,11 @@
     );
 </script>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
 </body>
 </html>

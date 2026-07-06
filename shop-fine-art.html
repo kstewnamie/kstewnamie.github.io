@@ -110,6 +110,54 @@
       border: 1px solid rgba(0,0,0,0.04);
       background: white;
     }
+
+        /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 3rem;
+      cursor: pointer;
+      font-weight: 300;
+    }
+
+    .lightbox-title {
+      margin-top: 1.5rem;
+      color: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+    }
+
+    
   </style>
 </head>
 <body>
@@ -186,7 +234,7 @@
   { slug: "triptych 2", title: "Triptych 2", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
   { slug: "triptych 3", title: "Triptych 3", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
 
-  { slug: "lazy boiiii", title: "Lazy Boiiiii", size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
+  { slug: "lazy boiiiii", title: "Lazy Boiiiii", size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
 
   { slug: "quail", title: "Quail", size: "12 × 12", price: 100, status: "available", collections: [] },
   { slug: "monday", title: "Monday", size: "10 × 12", price: 140, status: "available", collections: ["cats"] },
@@ -240,6 +288,8 @@
       const gradient = GRADIENTS[i % GRADIENTS.length];
       const card = document.createElement("div");
       card.className = "product-card fade-up";
+      card.dataset.image = art.slug;
+      card.dataset.title = art.title;
 
       let priceHTML, buttonHTML;
       if (art.status === "available" || art.status === "inquire") {
@@ -269,6 +319,9 @@
         </div>
       `;
       grid.appendChild(card);
+      card.addEventListener("click", () => {
+      openLightbox(art.slug, art.title);
+});
     });
 
     resultsCount.textContent = `Showing ${items.length} work${items.length !== 1 ? "s" : ""}`;
@@ -297,5 +350,13 @@
     renderGrid('all');
   }
 </script>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
+
 </body>
 </html>
