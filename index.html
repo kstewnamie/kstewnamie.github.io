@@ -337,11 +337,7 @@
       position: relative;
       overflow: hidden;
     }
-
-    .cat-fine-art .category-art { background: linear-gradient(160deg, #8B6BB1 0%, #D4607A 50%, #E8614A 100%); }
-    .cat-triptych .category-art { background: linear-gradient(160deg, #2A8C7A 0%, #D4A84B 60%, #6A9E7F 100%); }
-    .cat-cats .category-art { background: linear-gradient(160deg, #E8614A 0%, #E8A87C 50%, #D4A84B 100%); }
-
+    
     .category-art-shapes {
       position: absolute;
       inset: 0;
@@ -730,7 +726,7 @@
       .nav-links { display: none; }
       footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
     }
-    
+
     .product-card,
     .category-card,
     .gallery-item,
@@ -802,35 +798,36 @@
     </p>
   </div>
   <div class="categories-grid">
-    <a href="shop-fine-art.html" class="category-card cat-fine-art">
-      <div class="category-art" style="background-image:url('art/the glorious robin.webp'); background-size:cover; background-position:center;"></div>
+  <a href="shop-fine-art.html" class="category-card cat-fine-art">
+    <div class="category-art" id="allPaintingsImage"></div>
+    <div class="category-info">
+      <div class="category-name">All Paintings</div>
+      <div class="category-desc">
+        Bold acrylics on canvas — expressive, original, one-of-a-kind works.
       </div>
-      <div class="category-info">
-        <div class="category-name">All Paintings</div>
-        <div class="category-desc">Bold acrylics on canvas — expressive, original, one-of-a-kind works.</div>
-        <span class="category-badge">49 Originals</span>
+      <span class="category-badge">Collection</span>
+    </div>
+  </a>
+  <a href="shop-fine-art.html?collection=triptych" class="category-card cat-triptych">
+    <div class="category-art" id="triptychImage"></div>
+    <div class="category-info">
+      <div class="category-name">Triptych Series</div>
+      <div class="category-desc">
+        A three-panel set — one continuous idea across three canvases.
       </div>
-    </a>
-    <a href="shop-fine-art.html?collection=triptych" class="category-card cat-triptych">
-      <div class="category-art">
-        <div class="category-art" style="background-image:url('art/triptych 1.webp'); background-size:cover; background-position:center;"></div>
+      <span class="category-badge">3 Works</span>
+    </div>
+  </a>
+  <a href="shop-fine-art.html?collection=cats" class="category-card cat-cats">
+    <div class="category-art" id="catsImage"></div>
+    <div class="category-info">
+      <div class="category-name">Cat Collection</div>
+      <div class="category-desc">
+        White Cat, Monday, and Lazy Boiiiii — for the cat people.
       </div>
-      <div class="category-info">
-        <div class="category-name">Triptych Series</div>
-        <div class="category-desc">A three-panel set, sold together or apart — one continuous idea across three canvases.</div>
-        <span class="category-badge">3 Works</span>
-      </div>
-    </a>
-    <a href="shop-fine-art.html?collection=cats" class="category-card cat-cats">
-      <div class="category-art">
-        <div class="category-art" style="background-image:url('art/white cat.webp'); background-size:cover; background-position:center;"></div>
-      </div>
-      <div class="category-info">
-        <div class="category-name">Cat Collection</div>
-        <div class="category-desc">White Cat, Monday, and Lazy Boiiiii — for the cat people.</div>
-        <span class="category-badge">3 Works</span>
-      </div>
-    </a>
+      <span class="category-badge">3 Works</span>
+    </div>
+  </a>
   </div>
 </section>
 
@@ -997,37 +994,12 @@
   // (named to match each slug below) and they'll appear automatically; until
   // then a colour gradient stands in for each piece.
   const HERO_ART = [
-  { slug: "the glorious robin", title: "The Glorious Robin", size: "12 × 12", price: 200, status: "available", collections: [] },
-  { slug: "signs of spring", title: "Signs of Spring", size: "12 × 16", price: 250, status: "available", collections: [] },
-  { slug: "windows down", title: "Windows Down", size: "9 × 12", price: 100, status: "available", collections: [] },
-  { slug: "a view from cobh", title: "A View From Cobh", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "spring poppies", title: "Spring Poppies", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "spring blooms", title: "Spring Blooms", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "herring loss", title: "Herring Loss", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "triptych 1", title: "Triptych 1", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-  { slug: "triptych 2", title: "Triptych 2", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-  { slug: "triptych 3", title: "Triptych 3", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-
-  { slug: "lazy boiiii", title: "Lazy Boiiiii", size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
-
-  { slug: "quail", title: "Quail", size: "12 × 12", price: 100, status: "available", collections: [] },
-  { slug: "monday", title: "Monday", size: "10 × 12", price: 140, status: "available", collections: ["cats"] },
-  { slug: "zebra finch pair", title: "Zebra Finch Pair", size: "10 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "pond life", title: "Pond Life", size: "16 × 20", price: 200, status: "available", collections: [] },
-
-  { slug: "a wee bonbon", title: "A Wee Bonbon", size: "10 × 10", price: 80, status: "available", collections: [] },
-  { slug: "at rest", title: "At Rest", size: "11 × 14", price: 100, status: "available", collections: [] },
-  { slug: "birthday bouquet", title: "Birthday Bouquet", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "dick and janes", title: "Dick and Jane's", size: "12 × 16", price: 140, status: "available", collections: [] },
-
-  { slug: "flight map", title: "Flight Map", size: "11 × 14", price: 100, status: "available", collections: [] },
-  { slug: "hiding in the dogwood", title: "Hiding in the Dogwood", size: "12 × 12", price: 100, status: "available", collections: [] },
-  { slug: "life in the shadows", title: "Life in the Shadows", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "white cat", title: "White Cat", size: "12 × 16", price: 120, status: "available", collections: ["cats"] }
+  { slug: "the glorious robin", title: "The Glorious Robin", gradient: "linear-gradient(135deg, #E8614A, #D4A84B)" },
+  { slug: "signs of spring", title: "Signs of Spring", gradient: "linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A)" },
+  { slug: "windows down", title: "Windows Down", gradient: "linear-gradient(135deg, #2A8C7A, #6A9E7F)" },
+  { slug: "spring poppies", title: "Spring Poppies", gradient: "linear-gradient(135deg, #D4607A, #8B6BB1)" },
+  { slug: "lazy boiiii", title: "Lazy Boiiiii", gradient: "linear-gradient(135deg, #D4607A, #E8614A)" },
+  { slug: "white cat", title: "White Cat", gradient: "linear-gradient(160deg, #8B6BB1, #2A8C7A)" }
 ];
 
   const layerA = document.getElementById('heroLayerA');
@@ -1056,6 +1028,65 @@
       showingA = !showingA;
     }, 4000);
   }
+  // ---- RANDOM CATEGORY IMAGES ----
+
+    const CATEGORY_ART = {
+      all: [
+        "the glorious robin",
+        "signs of spring",
+        "windows down",
+        "a view from cobh",
+        "spring poppies",
+        "spring blooms",
+        "pond life",
+        "quail",
+        "white cat"
+      ],
+
+      triptych: [
+        "triptych 1",
+        "triptych 2",
+        "triptych 3"
+      ],
+
+      cats: [
+        "white cat",
+        "lazy boiiii",
+        "monday"
+      ]
+    };
+
+
+    function randomArtwork(list) {
+      return list[Math.floor(Math.random() * list.length)];
+    }
+
+
+    function setCategoryImage(element, collection) {
+      const painting = randomArtwork(CATEGORY_ART[collection]);
+
+      element.style.backgroundImage =
+        `url("art/${encodeURIComponent(painting)}.webp")`;
+
+      element.style.backgroundSize = "cover";
+      element.style.backgroundPosition = "center";
+    }
+
+
+    setCategoryImage(
+      document.getElementById("allPaintingsImage"),
+      "all"
+    );
+
+    setCategoryImage(
+      document.getElementById("triptychImage"),
+      "triptych"
+    );
+
+    setCategoryImage(
+      document.getElementById("catsImage"),
+      "cats"
+    );
 </script>
 
 </body>
