@@ -839,31 +839,31 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item featured fade-up">
-      <div class="gallery-thumb" style="background-image:url('images/pelicans-on-the-pier.webp'), linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); background-size: cover, cover;">
+      <div class="gallery-thumb" style="background-image:url('art/flight\ map.webp'), linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
-        <div class="gallery-title">Pelicans on the Pier</div>
+        <div class="gallery-title">Flight Map</div>
         <div class="gallery-meta">
-          <span class="gallery-medium">Acrylic on Canvas · 16×40"</span>
-          <span class="gallery-price">$360</span>
+          <span class="gallery-medium">Acrylic on Canvas · 11x14"</span>
+          <span class="gallery-price">$100</span>
         </div>
       </div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-thumb" style="background-image:url('images/harbour-days.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover;">
+      <div class="gallery-thumb" style="background-image:url('art/lazy\ boiiiii.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
-        <div class="gallery-title">Harbour Days</div>
+        <div class="gallery-title">Lazy Boiiiii</div>
         <div class="gallery-meta">
-          <span class="gallery-medium">Acrylic on Canvas · 24×24"</span>
-          <span class="gallery-price">$330</span>
+          <span class="gallery-medium">Acrylic on Canvas · 12x16"</span>
+          <span class="gallery-price">$140</span>
         </div>
       </div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-thumb" style="background-image:url('images/the-glorious-robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover;">
+      <div class="gallery-thumb" style="background-image:url('art/the\ glorious\ robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -875,19 +875,19 @@
       </div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-thumb" style="background-image:url('images/wilbur.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover;">
+      <div class="gallery-thumb" style="background-image:url('art/quail.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
-        <div class="gallery-title">Wilbur</div>
+        <div class="gallery-title">Quail</div>
         <div class="gallery-meta">
-          <span class="gallery-medium">Acrylic on Canvas · 24×24"</span>
-          <span class="gallery-price">$330</span>
+          <span class="gallery-medium">Acrylic on Canvas · 12x12"</span>
+          <span class="gallery-price">$100</span>
         </div>
       </div>
     </div>
     <div class="gallery-item fade-up">
-      <div class="gallery-thumb" style="background-image:url('images/signs-of-spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover;">
+      <div class="gallery-thumb" style="background-image:url('art/signs\ of\ spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -989,7 +989,7 @@
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
   // ---- HERO PHOTO CYCLE ----
-  // Cycles through the gallery. Drop matching photos into an "images" folder
+  // Cycles through the gallery. Drop matching photos into an "art" folder
   // (named to match each slug below) and they'll appear automatically; until
   // then a colour gradient stands in for each piece.
   const HERO_ART = [
@@ -1033,7 +1033,7 @@
   let showingA = true;
 
   function setLayer(el, art) {
-    el.style.backgroundImage = `url('images/${art.slug}.webp'), ${art.gradient}`;
+    el.style.backgroundImage = `url('art/${art.slug}.webp'), ${art.gradient}`;
   }
 
   if (layerA && layerB) {
