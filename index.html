@@ -426,11 +426,6 @@
 
     .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(28,26,24,0.1); }
 
-    .gallery-item.featured {
-      grid-column: span 2;
-      grid-row: span 2;
-    }
-
     .gallery-thumb {
       position: relative;
       overflow: hidden;
@@ -520,11 +515,24 @@
     #about .section-subtitle { color: rgba(250,246,239,0.65); max-width: 100%; }
 
     .about-portrait {
-      background-image: url("about.webp");
-      background-size: cover;
-      background-position: center;
-      border-radius: 20px;
-      min-height: 450px;
+      position:relative;
+      background-image:url("about.webp");
+      background-size:cover;
+      background-position:center;
+      border-radius:20px;
+      min-height:450px;
+      overflow:hidden;
+    }
+
+    .about-portrait::after {
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        to top,
+        rgba(0,0,0,.45),
+        transparent 50%
+      );
     }
 
     .about-portrait-inner {
@@ -914,7 +922,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item featured fade-up" onclick="openLightbox('lazy boiiiii','Lazy Boiiiii')">
+    <div class="gallery-item fade-up" onclick="openLightbox('lazy boiiiii','Lazy Boiiiii')">
       <div class="gallery-thumb" style="background-image:url('art/lazy\ boiiiii.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -926,7 +934,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item featured fade-up" onclick="openLightbox('the glorious robin','The Glorious Robin')">
+    <div class="gallery-item fade-up" onclick="openLightbox('the glorious robin','The Glorious Robin')">
       <div class="gallery-thumb" style="background-image:url('art/the\ glorious\ robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -938,7 +946,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item featured fade-up" onclick="openLightbox('quail','Quail')">
+    <div class="gallery-item fade-up" onclick="openLightbox('quail','Quail')">
       <div class="gallery-thumb" style="background-image:url('art/quail.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
@@ -950,7 +958,7 @@
         </div>
       </div>
     </div>
-    <div class="gallery-item featured fade-up" onclick="openLightbox('signs of spring','Signs of Spring')">
+    <div class="gallery-item fade-up" onclick="openLightbox('signs of spring','Signs of Spring')">
       <div class="gallery-thumb" style="background-image:url('art/signs\ of\ spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover;">
         <div class="gallery-overlay"></div>
       </div>
