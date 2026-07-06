@@ -8,63 +8,115 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== BASE ===== */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
 :root{
   --cream:#FAF6EF;
+  --warm-white:#FFFDF9;
   --charcoal:#1C1A18;
   --ink:#2E2B26;
   --muted:#7A756C;
   --coral:#E8614A;
-  --lavender:#8B6BB1;
+  --teal:#2A8C7A;
   --gold:#D4A84B;
+  --lavender:#8B6BB1;
+  --rose:#D4607A;
 }
+
+html{scroll-behavior:smooth}
+
 body{
   font-family:'DM Sans',sans-serif;
   background:var(--cream);
   color:var(--ink);
+  overflow-x:hidden;
 }
 
 /* NAV */
 nav{
-  position:fixed;top:0;left:0;right:0;
-  display:flex;justify-content:space-between;
-  padding:1rem 2rem;
-  background:rgba(250,246,239,.9);
-  backdrop-filter:blur(10px);
+  position:fixed;
+  top:0;left:0;right:0;
   z-index:100;
+  display:flex;
+  justify-content:space-between;
+  padding:1.2rem 3rem;
+  background:rgba(250,246,239,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(28,26,24,.08);
 }
 .nav-logo{
   font-family:'Playfair Display';
+  font-size:1.4rem;
   font-weight:700;
-  text-decoration:none;
   color:var(--charcoal);
+  text-decoration:none;
 }
 .nav-logo span{color:var(--coral)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{text-decoration:none;color:var(--muted);text-transform:uppercase;font-size:.8rem}
+
+.nav-links{
+  display:flex;
+  gap:2.5rem;
+  list-style:none;
+}
+.nav-links a{
+  text-decoration:none;
+  color:var(--muted);
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+}
 .nav-links a:hover{color:var(--coral)}
+
+.nav-cta{
+  background:var(--charcoal);
+  color:white!important;
+  padding:.55rem 1.4rem;
+  border-radius:100px;
+}
 
 /* HERO */
 .hero{
+  min-height:100vh;
   display:grid;
   grid-template-columns:1fr 1fr;
-  min-height:100vh;
   padding-top:80px;
+  background:var(--warm-white);
 }
+
 .hero-left{
   display:flex;
   flex-direction:column;
   justify-content:center;
-  padding:4rem;
+  padding:5rem;
 }
-.hero-left h1{
-  font-family:'Playfair Display';
-  font-size:3.5rem;
-}
-.hero-left em{color:var(--coral)}
 
-.hero-carousel{
+.hero-tag{
+  background:rgba(232,97,74,.1);
+  color:var(--coral);
+  padding:.4rem 1rem;
+  border-radius:100px;
+  font-size:.75rem;
+  text-transform:uppercase;
+  width:max-content;
+  margin-bottom:1.5rem;
+}
+
+.hero h1{
+  font-family:'Playfair Display';
+  font-size:4rem;
+  line-height:1.05;
+  margin-bottom:1rem;
+}
+.hero h1 em{color:var(--coral)}
+
+.hero-bio{
+  color:var(--muted);
+  max-width:480px;
+  line-height:1.7;
+}
+
+/* HERO CAROUSEL */
+.hero-right{
   position:relative;
   overflow:hidden;
 }
@@ -72,7 +124,7 @@ nav{
   position:absolute;
   inset:0;
   opacity:0;
-  transition:opacity .6s;
+  transition:.8s;
 }
 .hero-slide.active{opacity:1}
 .hero-slide img{
@@ -82,75 +134,169 @@ nav{
 }
 
 /* SECTIONS */
-section{padding:5rem 3rem}
-.section-title{
-  font-family:'Playfair Display';
-  font-size:2.5rem;
+section{padding:6rem 5rem}
+
+.section-label{
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.15em;
+  color:var(--coral);
   margin-bottom:1rem;
 }
 
-/* CARDS */
-.grid{
+.section-title{
+  font-family:'Playfair Display';
+  font-size:2.8rem;
+  margin-bottom:1rem;
+}
+
+.section-subtitle{
+  color:var(--muted);
+  max-width:600px;
+  line-height:1.7;
+  margin-bottom:3rem;
+}
+
+/* SHOP */
+.categories-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(2,1fr);
   gap:1.5rem;
 }
-.card{
+
+.category-card{
+  border-radius:16px;
+  overflow:hidden;
+  text-decoration:none;
+  transition:.3s;
   background:white;
-  border-radius:12px;
+}
+.category-card:hover{transform:translateY(-6px)}
+
+.category-art{
+  height:260px;
+  background:linear-gradient(135deg,#8B6BB1,#D4607A,#E8614A);
+}
+
+.category-info{
+  padding:1.2rem;
+}
+.category-name{
+  font-family:'Playfair Display';
+  font-size:1.2rem;
+}
+.category-desc{
+  color:var(--muted);
+  font-size:.85rem;
+  margin-top:.3rem;
+}
+
+/* GALLERY */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+
+.gallery-item{
+  border-radius:14px;
   overflow:hidden;
   cursor:pointer;
+  background:white;
   transition:.3s;
 }
-.card:hover{transform:translateY(-5px)}
-.card img{width:100%;height:220px;object-fit:cover}
+.gallery-item:hover{transform:translateY(-5px)}
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:999;
+.gallery-thumb{
+  height:240px;
+  background:linear-gradient(135deg,#D4607A,#8B6BB1,#2A8C7A);
 }
-.modal img{
-  max-width:90%;
-  max-height:90%;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
+
+.gallery-info{
+  padding:1rem;
+}
+
+/* ABOUT */
+#about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:4rem;
+  background:var(--charcoal);
+  color:white;
+}
+
+.about-img{
+  border-radius:20px;
+  overflow:hidden;
+}
+.about-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.about-mediums{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  margin-top:1rem;
+}
+.about-mediums span{
+  border:1px solid rgba(255,255,255,.2);
+  padding:.4rem .8rem;
+  border-radius:100px;
+  font-size:.8rem;
 }
 
 /* CONTACT */
-.contact a{color:var(--coral)}
-footer{
-  padding:2rem;
+#contact{
   text-align:center;
+}
+#contact a{color:var(--coral)}
+
+/* FOOTER */
+footer{
+  padding:2.5rem;
   background:var(--charcoal);
   color:white;
+  text-align:center;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  section{padding:4rem 2rem}
+  #about{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr}
+  .categories-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 
 <body>
 
+<!-- NAV -->
 <nav>
-  <a class="nav-logo" href="#">KdotStew<span> Art</span></a>
+  <a class="nav-logo">KdotStew<span> Art</span></a>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
   <div class="hero-left">
+    <div class="hero-tag">Original Acrylic Paintings</div>
     <h1>Art that <em>lives</em> with you</h1>
-    <p>Original acrylic paintings from Norfolk County, Ontario.</p>
+    <p class="hero-bio">
+      Hi, I’m Karen — a Canadian acrylic painter creating expressive, colourful work inspired by nature, animals, and everyday life.
+    </p>
   </div>
 
-  <div class="hero-carousel">
+  <div class="hero-right">
     <div class="hero-slide active"><img src="art/the glorious robin.webp"></div>
     <div class="hero-slide"><img src="art/pond life.webp"></div>
     <div class="hero-slide"><img src="art/spring poppies.webp"></div>
@@ -159,17 +305,28 @@ footer{
 
 <!-- SHOP -->
 <section id="shop">
-  <h2 class="section-title">Collections</h2>
-  <div class="grid">
+  <div class="section-label">Collections</div>
+  <h2 class="section-title">Browse Work</h2>
+  <p class="section-subtitle">
+    Two focused collections: expressive triptychs and animal-inspired works.
+  </p>
 
-    <a class="card" href="triptych.html">
-      <img src="art/triptych 1.webp">
-      <p style="padding:1rem">Triptych Series</p>
+  <div class="categories-grid">
+
+    <a class="category-card" href="triptych.html">
+      <div class="category-art"></div>
+      <div class="category-info">
+        <div class="category-name">Triptych</div>
+        <div class="category-desc">A three-part expressive series exploring colour and motion.</div>
+      </div>
     </a>
 
-    <a class="card" href="cats.html">
-      <img src="art/white cat.webp">
-      <p style="padding:1rem">Cats Collection</p>
+    <a class="category-card" href="cats.html">
+      <div class="category-art"></div>
+      <div class="category-info">
+        <div class="category-name">Cats</div>
+        <div class="category-desc">Feline studies including Monday, Lazy Boiiiii, and White Cat.</div>
+      </div>
     </a>
 
   </div>
@@ -177,44 +334,54 @@ footer{
 
 <!-- GALLERY -->
 <section id="gallery">
-  <h2 class="section-title">Gallery</h2>
-  <div class="grid">
+  <div class="section-label">Gallery</div>
+  <h2 class="section-title">Recent Work</h2>
 
-    <div class="card" onclick="openModal('art/the glorious robin.webp')">
-      <img src="art/the glorious robin.webp">
-    </div>
+  <div class="gallery-grid">
 
-    <div class="card" onclick="openModal('art/signs of spring.webp')">
-      <img src="art/signs of spring.webp">
-    </div>
-
-    <div class="card" onclick="openModal('art/pond life.webp')">
-      <img src="art/pond life.webp">
-    </div>
+    <div class="gallery-item"><div class="gallery-thumb"></div></div>
+    <div class="gallery-item"><div class="gallery-thumb"></div></div>
+    <div class="gallery-item"><div class="gallery-thumb"></div></div>
 
   </div>
 </section>
 
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-img">
+    <img src="art/about.webp">
+  </div>
+
+  <div>
+    <div class="section-label" style="color:var(--gold)">About</div>
+    <h2 class="section-title">Making colour feel like home</h2>
+
+    <p style="opacity:.8;line-height:1.7">
+      Based in Norfolk County, Ontario, I create acrylic paintings inspired by emotion, nature, and quiet everyday moments.
+    </p>
+
+    <div class="about-mediums">
+      <span>Acrylic Painting</span>
+      <span>Canvas Work</span>
+      <span>Commissions</span>
+    </div>
+  </div>
+</section>
+
 <!-- CONTACT -->
-<section id="contact" class="contact">
-  <h2 class="section-title">Contact</h2>
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let’s make something together</h2>
 
-  <p>
-    To purchase artwork, contact: <br>
-    <a href="mailto:stewartk1@icloud.com">stewartk1@icloud.com</a>
+  <p class="section-subtitle">
+    To purchase artwork, contact:<br>
+    <a href="mailto:stewartk1@icloud.com">stewartk1@icloud.com</a><br><br>
+
+    Instagram: <a href="https://www.instagram.com/k_dot_stew/">@k_dot_stew</a><br>
+    Facebook: <a href="https://www.facebook.com/karen.stewie.3">Karen Stewart</a>
   </p>
 
-  <p style="margin-top:1rem">
-    Instagram:
-    <a href="https://www.instagram.com/k_dot_stew/">@k_dot_stew</a>
-  </p>
-
-  <p>
-    Facebook:
-    <a href="https://www.facebook.com/karen.stewie.3">Karen Stewart</a>
-  </p>
-
-  <p style="margin-top:1rem">
+  <p style="color:var(--muted)">
     Upcoming: Port Dover Studio Tour<br>
     Gallery: Port Stanley Art Emporium
   </p>
@@ -222,29 +389,15 @@ footer{
 
 <footer>© 2026 Karen Stewart</footer>
 
-<!-- MODAL -->
-<div class="modal" id="modal" onclick="closeModal()">
-  <img id="modalImg">
-</div>
-
 <script>
-/* HERO CAROUSEL */
 let i=0;
 const slides=document.querySelectorAll(".hero-slide");
+
 setInterval(()=>{
   slides[i].classList.remove("active");
   i=(i+1)%slides.length;
   slides[i].classList.add("active");
 },3000);
-
-/* MODAL */
-function openModal(src){
-  document.getElementById("modal").style.display="flex";
-  document.getElementById("modalImg").src=src;
-}
-function closeModal(){
-  document.getElementById("modal").style.display="none";
-}
 </script>
 
 </body>
