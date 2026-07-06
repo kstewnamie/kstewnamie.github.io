@@ -1,283 +1,735 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KdotStew Art</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KdotStew Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    :root {
+      --cream: #FAF6EF;
+      --warm-white: #FFFDF9;
+      --charcoal: #1C1A18;
+      --ink: #2E2B26;
+      --muted: #7A756C;
+      --coral: #E8614A;
+      --coral-light: #FDEAE6;
+      --teal: #2A8C7A;
+      --teal-light: #E0F5F1;
+      --gold: #D4A84B;
+      --gold-light: #FDF5E3;
+      --lavender: #8B6BB1;
+      --lavender-light: #F0EAF8;
+      --rose: #D4607A;
+      --rose-light: #FDEAF0;
+      --sage: #6A9E7F;
+    }
 
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html { scroll-behavior: smooth; }
 
-:root{
-  --cream:#FAF6EF;
-  --warm-white:#FFFDF9;
-  --charcoal:#1C1A18;
-  --ink:#2E2B26;
-  --muted:#7A756C;
-  --coral:#E8614A;
-  --teal:#2A8C7A;
-  --gold:#D4A84B;
-  --lavender:#8B6BB1;
-  --rose:#D4607A;
-}
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
 
-html{scroll-behavior:smooth}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(250, 246, 239, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(28,26,24,0.08);
+    }
 
-body{
-  font-family:'DM Sans',sans-serif;
-  background:var(--cream);
-  color:var(--ink);
-  overflow-x:hidden;
-}
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
 
-/* NAV */
-nav{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:100;
-  display:flex;
-  justify-content:space-between;
-  padding:1.2rem 3rem;
-  background:rgba(250,246,239,.92);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(28,26,24,.08);
-}
-.nav-logo{
-  font-family:'Playfair Display';
-  font-size:1.4rem;
-  font-weight:700;
-  color:var(--charcoal);
-  text-decoration:none;
-}
-.nav-logo span{color:var(--coral)}
+    .nav-logo span { color: var(--coral); font-style: italic; }
 
-.nav-links{
-  display:flex;
-  gap:2.5rem;
-  list-style:none;
-}
-.nav-links a{
-  text-decoration:none;
-  color:var(--muted);
-  font-size:.85rem;
-  text-transform:uppercase;
-  letter-spacing:.05em;
-}
-.nav-links a:hover{color:var(--coral)}
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
 
-.nav-cta{
-  background:var(--charcoal);
-  color:white!important;
-  padding:.55rem 1.4rem;
-  border-radius:100px;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  padding-top:80px;
-  background:var(--warm-white);
-}
+    .nav-links a:hover { color: var(--coral); }
 
-.hero-left{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:5rem;
-}
+    .nav-cta {
+      background: var(--charcoal);
+      color: var(--cream) !important;
+      padding: 0.55rem 1.4rem;
+      border-radius: 100px;
+      transition: background 0.2s !important;
+    }
 
-.hero-tag{
-  background:rgba(232,97,74,.1);
-  color:var(--coral);
-  padding:.4rem 1rem;
-  border-radius:100px;
-  font-size:.75rem;
-  text-transform:uppercase;
-  width:max-content;
-  margin-bottom:1.5rem;
-}
+    .nav-cta:hover { background: var(--coral) !important; color: white !important; }
 
-.hero h1{
-  font-family:'Playfair Display';
-  font-size:4rem;
-  line-height:1.05;
-  margin-bottom:1rem;
-}
-.hero h1 em{color:var(--coral)}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 80px;
+      background: var(--warm-white);
+    }
 
-.hero-bio{
-  color:var(--muted);
-  max-width:480px;
-  line-height:1.7;
-}
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 4rem 5rem 5rem;
+    }
 
-/* HERO CAROUSEL */
-.hero-right{
-  position:relative;
-  overflow:hidden;
-}
-.hero-slide{
-  position:absolute;
-  inset:0;
-  opacity:0;
-  transition:.8s;
-}
-.hero-slide.active{opacity:1}
-.hero-slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--coral-light);
+      color: var(--coral);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      width: fit-content;
+    }
 
-/* SECTIONS */
-section{padding:6rem 5rem}
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--coral);
+      border-radius: 50%;
+    }
 
-.section-label{
-  font-size:.78rem;
-  text-transform:uppercase;
-  letter-spacing:.15em;
-  color:var(--coral);
-  margin-bottom:1rem;
-}
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--charcoal);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
 
-.section-title{
-  font-family:'Playfair Display';
-  font-size:2.8rem;
-  margin-bottom:1rem;
-}
+    .hero h1 em {
+      font-style: italic;
+      color: var(--coral);
+    }
 
-.section-subtitle{
-  color:var(--muted);
-  max-width:600px;
-  line-height:1.7;
-  margin-bottom:3rem;
-}
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 460px;
+      margin-bottom: 2.5rem;
+    }
 
-/* SHOP */
-.categories-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:1.5rem;
-}
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
 
-.category-card{
-  border-radius:16px;
-  overflow:hidden;
-  text-decoration:none;
-  transition:.3s;
-  background:white;
-}
-.category-card:hover{transform:translateY(-6px)}
+    .btn-primary {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
 
-.category-art{
-  height:260px;
-  background:linear-gradient(135deg,#8B6BB1,#D4607A,#E8614A);
-}
+    .btn-primary:hover {
+      background: var(--charcoal);
+      transform: translateY(-2px);
+    }
 
-.category-info{
-  padding:1.2rem;
-}
-.category-name{
-  font-family:'Playfair Display';
-  font-size:1.2rem;
-}
-.category-desc{
-  color:var(--muted);
-  font-size:.85rem;
-  margin-top:.3rem;
-}
+    .btn-outline {
+      display: inline-block;
+      border: 1.5px solid var(--charcoal);
+      color: var(--charcoal);
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
 
-/* GALLERY */
-.gallery-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:1.5rem;
-}
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--cream);
+      transform: translateY(-2px);
+    }
 
-.gallery-item{
-  border-radius:14px;
-  overflow:hidden;
-  cursor:pointer;
-  background:white;
-  transition:.3s;
-}
-.gallery-item:hover{transform:translateY(-5px)}
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(28,26,24,0.1);
+    }
 
-.gallery-thumb{
-  height:240px;
-  background:linear-gradient(135deg,#D4607A,#8B6BB1,#2A8C7A);
-}
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
 
-.gallery-info{
-  padding:1rem;
-}
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
 
-/* ABOUT */
-#about{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:4rem;
-  background:var(--charcoal);
-  color:white;
-}
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      background: var(--lavender-light);
+    }
 
-.about-img{
-  border-radius:20px;
-  overflow:hidden;
-}
-.about-img img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+    .hero-right::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--lavender-light) 0%, var(--rose-light) 50%, var(--gold-light) 100%);
+    }
 
-.about-mediums{
-  display:flex;
-  flex-wrap:wrap;
-  gap:.5rem;
-  margin-top:1rem;
-}
-.about-mediums span{
-  border:1px solid rgba(255,255,255,.2);
-  padding:.4rem .8rem;
-  border-radius:100px;
-  font-size:.8rem;
-}
+    .hero-photo-cycle {
+      position: absolute;
+      inset: 8px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
 
-/* CONTACT */
-#contact{
-  text-align:center;
-}
-#contact a{color:var(--coral)}
+    .hero-photo-layer {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
 
-/* FOOTER */
-footer{
-  padding:2.5rem;
-  background:var(--charcoal);
-  color:white;
-  text-align:center;
-}
+    .hero-photo-layer.active { opacity: 1; }
 
-/* MOBILE */
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  section{padding:4rem 2rem}
-  #about{grid-template-columns:1fr}
-  .gallery-grid{grid-template-columns:1fr}
-  .categories-grid{grid-template-columns:1fr}
-}
-</style>
+    .hero-photo-caption {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      z-index: 2;
+      background: rgba(250,246,239,0.9);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* Paint stroke decoration */
+    .paint-stroke {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+    }
+
+    /* SECTION STYLES */
+    section { padding: 6rem 5rem; }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--coral);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 3.5rem;
+    }
+
+    /* SHOP CATEGORIES */
+    #shop {
+      background: var(--warm-white);
+    }
+
+    .shop-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .category-card {
+      border-radius: 16px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(28,26,24,0.12);
+    }
+
+    .category-art {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cat-fine-art .category-art { background: linear-gradient(160deg, #8B6BB1 0%, #D4607A 50%, #E8614A 100%); }
+    .cat-triptych .category-art { background: linear-gradient(160deg, #2A8C7A 0%, #D4A84B 60%, #6A9E7F 100%); }
+    .cat-cats .category-art { background: linear-gradient(160deg, #E8614A 0%, #E8A87C 50%, #D4A84B 100%); }
+
+    .category-art-shapes {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .shape-circle {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      position: absolute;
+    }
+
+    .shape-rect {
+      width: 60px; height: 90px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.15);
+      transform: rotate(15deg);
+      position: absolute;
+      left: 30%;
+    }
+
+    .category-info {
+      padding: 1.2rem 1.4rem;
+      background: white;
+    }
+
+    .category-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.3rem;
+    }
+
+    .category-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .category-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 0.25rem 0.7rem;
+      border-radius: 100px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .cat-fine-art .category-badge { background: var(--lavender-light); color: var(--lavender); }
+    .cat-triptych .category-badge { background: var(--teal-light); color: var(--teal); }
+    .cat-cats .category-badge { background: var(--gold-light); color: #9A6F0A; }
+
+    /* FEATURED WORKS */
+    #gallery {
+      background: var(--cream);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      background: white;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: 0 16px 32px rgba(28,26,24,0.1); }
+
+    .gallery-item.featured {
+      grid-column: span 2;
+    }
+
+    .gallery-thumb {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .gallery-item.featured .gallery-thumb { height: 360px; }
+    .gallery-thumb { height: 220px; background-size: cover; background-position: center; }
+
+    .g1 { background: linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); }
+    .g2 { background: linear-gradient(135deg, #2A8C7A, #6A9E7F); }
+    .g3 { background: linear-gradient(135deg, #E8614A, #D4A84B); }
+    .g4 { background: linear-gradient(135deg, #D4607A, #8B6BB1); }
+    .g5 { background: linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(28,26,24,0.0);
+      transition: background 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 1.2rem;
+    }
+
+    .gallery-item:hover .gallery-overlay { background: rgba(28,26,24,0.15); }
+
+    .gallery-info {
+      padding: 1rem 1.2rem;
+    }
+
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+
+    .gallery-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gallery-medium {
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--coral);
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--charcoal);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    #about .section-label { color: var(--gold); }
+    #about .section-title { color: var(--cream); }
+    #about .section-subtitle { color: rgba(250,246,239,0.65); max-width: 100%; }
+
+    .about-portrait {
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg, #8B6BB1 0%, #D4607A 40%, #E8614A 80%, #D4A84B 100%);
+    }
+
+    .about-portrait-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .about-portrait-tag {
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .about-portrait-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .about-portrait-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .about-mediums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0;
+    }
+
+    .medium-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid rgba(250,246,239,0.2);
+      color: rgba(250,246,239,0.8);
+      transition: all 0.2s;
+    }
+
+    .medium-tag:hover {
+      background: rgba(250,246,239,0.1);
+      border-color: rgba(250,246,239,0.4);
+    }
+
+    .about-quote {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      border-left: 3px solid var(--gold);
+      background: rgba(212,168,75,0.08);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .about-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(250,246,239,0.85);
+      line-height: 1.6;
+    }
+
+    /* CONTACT / COMMISSION */
+    #contact {
+      background: var(--warm-white);
+      text-align: center;
+    }
+
+    #contact .section-label,
+    #contact .section-title,
+    #contact .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1px solid rgba(28,26,24,0.07);
+      transition: all 0.3s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(28,26,24,0.08);
+    }
+
+    .contact-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin: 0 auto 1rem;
+    }
+
+    .contact-card:nth-child(1) .contact-icon { background: var(--coral-light); }
+    .contact-card:nth-child(2) .contact-icon { background: var(--teal-light); }
+    .contact-card:nth-child(3) .contact-icon { background: var(--lavender-light); }
+
+    .contact-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--coral);
+      text-decoration: none;
+      border-bottom: 1px solid var(--coral);
+      padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover { opacity: 0.7; }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      color: rgba(250,246,239,0.5);
+      padding: 2.5rem 5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.85rem;
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--cream);
+    }
+
+    .footer-logo span { color: var(--coral); font-style: italic; }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: rgba(250,246,239,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--cream); }
+
+    /* DECORATIVE BLOBS */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Scroll animation */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 350px; }
+      .hero-left { padding: 3rem 2rem; }
+      section { padding: 4rem 2rem; }
+      .categories-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item.featured { grid-column: span 1; }
+      #about { grid-template-columns: 1fr; padding: 4rem 2rem; }
+      .contact-cards { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
+    }
+  </style>
 </head>
-
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-logo">KdotStew<span> Art</span></a>
+  <a href="#" class="nav-logo">KdotStew<span> Art</span></a>
   <ul class="nav-links">
     <li><a href="#shop">Shop</a></li>
     <li><a href="#gallery">Gallery</a></li>
@@ -287,117 +739,319 @@ footer{
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="home">
   <div class="hero-left">
-    <div class="hero-tag">Original Acrylic Paintings</div>
+    <div class="hero-tag">Original Art &amp; Prints</div>
     <h1>Art that <em>lives</em> with you</h1>
     <p class="hero-bio">
-      Hi, I’m Karen — a Canadian acrylic painter creating expressive, colourful work inspired by nature, animals, and everyday life.
+      Hi, I'm Karen — a Canadian artist working in bold acrylics on canvas. Every piece is original, one-of-a-kind, and painted with as much colour as I can get away with.
+    </p>
+    <div class="hero-buttons">
+      <a href="#shop" class="btn-primary">Shop the Collection</a>
+      <a href="#about" class="btn-outline">Who am I?</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">49</div>
+        <div class="hero-stat-label">Original Works</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Collections</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">2</div>
+        <div class="hero-stat-label">Upcoming Events</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-cycle" id="heroPhotoCycle">
+      <div class="hero-photo-layer active" id="heroLayerA"></div>
+      <div class="hero-photo-layer" id="heroLayerB"></div>
+      <div class="hero-photo-caption" id="heroCaption"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SHOP CATEGORIES -->
+<section id="shop">
+  <div class="shop-header">
+    <div>
+      <div class="section-label">The Shop</div>
+      <h2 class="section-title">Browse by Collection</h2>
+    </div>
+    <p style="color: var(--muted); font-size:0.9rem; max-width:300px; text-align:right; line-height:1.6;">
+      Every piece is an original acrylic painting on canvas, made with love.
     </p>
   </div>
-
-  <div class="hero-right">
-    <div class="hero-slide active"><img src="art/the glorious robin.webp"></div>
-    <div class="hero-slide"><img src="art/pond life.webp"></div>
-    <div class="hero-slide"><img src="art/spring poppies.webp"></div>
-  </div>
-</section>
-
-<!-- SHOP -->
-<section id="shop">
-  <div class="section-label">Collections</div>
-  <h2 class="section-title">Browse Work</h2>
-  <p class="section-subtitle">
-    Two focused collections: expressive triptychs and animal-inspired works.
-  </p>
-
   <div class="categories-grid">
-
-    <a class="category-card" href="triptych.html">
-      <div class="category-art"></div>
+    <a href="shop-fine-art.html" class="category-card cat-fine-art">
+      <div class="category-art">
+        <div class="category-art-shapes">
+          <div class="shape-circle" style="width:100px;height:100px;top:20%;left:15%;"></div>
+          <div class="shape-circle" style="width:60px;height:60px;bottom:25%;right:20%;opacity:0.3;"></div>
+          <div class="shape-rect"></div>
+        </div>
+      </div>
       <div class="category-info">
-        <div class="category-name">Triptych</div>
-        <div class="category-desc">A three-part expressive series exploring colour and motion.</div>
+        <div class="category-name">All Paintings</div>
+        <div class="category-desc">Bold acrylics on canvas — expressive, original, one-of-a-kind works.</div>
+        <span class="category-badge">49 Originals</span>
       </div>
     </a>
-
-    <a class="category-card" href="cats.html">
-      <div class="category-art"></div>
+    <a href="shop-fine-art.html?collection=triptych" class="category-card cat-triptych">
+      <div class="category-art">
+        <div class="category-art-shapes">
+          <div class="shape-circle" style="width:90px;height:90px;top:15%;right:20%;"></div>
+          <div class="shape-circle" style="width:50px;height:50px;bottom:20%;left:25%;opacity:0.4;"></div>
+        </div>
+      </div>
       <div class="category-info">
-        <div class="category-name">Cats</div>
-        <div class="category-desc">Feline studies including Monday, Lazy Boiiiii, and White Cat.</div>
+        <div class="category-name">Triptych Series</div>
+        <div class="category-desc">A three-panel set, sold together or apart — one continuous idea across three canvases.</div>
+        <span class="category-badge">3 Works</span>
       </div>
     </a>
-
+    <a href="shop-fine-art.html?collection=cats" class="category-card cat-cats">
+      <div class="category-art">
+        <div class="category-art-shapes">
+          <div class="shape-circle" style="width:70px;height:70px;top:20%;left:20%;"></div>
+          <div class="shape-circle" style="width:45px;height:45px;bottom:30%;right:15%;opacity:0.5;"></div>
+          <div class="shape-circle" style="width:35px;height:35px;top:50%;left:55%;opacity:0.3;"></div>
+        </div>
+      </div>
+      <div class="category-info">
+        <div class="category-name">Cat Collection</div>
+        <div class="category-desc">White Cat, Monday, and Lazy Boiiiii — for the cat people.</div>
+        <span class="category-badge">3 Works</span>
+      </div>
+    </a>
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALLERY / FEATURED -->
 <section id="gallery">
-  <div class="section-label">Gallery</div>
-  <h2 class="section-title">Recent Work</h2>
-
+  <div class="section-label">Featured Works</div>
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;">
+    <h2 class="section-title" style="margin-bottom:0;">Fresh off the easel</h2>
+    <a href="#shop" class="btn-outline" style="white-space:nowrap;">View All Works</a>
+  </div>
   <div class="gallery-grid">
-
-    <div class="gallery-item"><div class="gallery-thumb"></div></div>
-    <div class="gallery-item"><div class="gallery-thumb"></div></div>
-    <div class="gallery-item"><div class="gallery-thumb"></div></div>
-
+    <div class="gallery-item featured fade-up">
+      <div class="gallery-thumb" style="background-image:url('images/pelicans-on-the-pier.webp'), linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); background-size: cover, cover;">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Pelicans on the Pier</div>
+        <div class="gallery-meta">
+          <span class="gallery-medium">Acrylic on Canvas · 16×40"</span>
+          <span class="gallery-price">$360</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-thumb" style="background-image:url('images/harbour-days.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover;">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Harbour Days</div>
+        <div class="gallery-meta">
+          <span class="gallery-medium">Acrylic on Canvas · 24×24"</span>
+          <span class="gallery-price">$330</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-thumb" style="background-image:url('images/the-glorious-robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover;">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">The Glorious Robin</div>
+        <div class="gallery-meta">
+          <span class="gallery-medium">Acrylic on Canvas · 12×12"</span>
+          <span class="gallery-price">$200</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-thumb" style="background-image:url('images/wilbur.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover;">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Wilbur</div>
+        <div class="gallery-meta">
+          <span class="gallery-medium">Acrylic on Canvas · 24×24"</span>
+          <span class="gallery-price">$330</span>
+        </div>
+      </div>
+    </div>
+    <div class="gallery-item fade-up">
+      <div class="gallery-thumb" style="background-image:url('images/signs-of-spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover;">
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="gallery-info">
+        <div class="gallery-title">Signs Of Spring</div>
+        <div class="gallery-meta">
+          <span class="gallery-medium">Acrylic on Canvas · 12×16"</span>
+          <span class="gallery-price">$250</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-img">
-    <img src="art/about.webp">
-  </div>
-
-  <div>
-    <div class="section-label" style="color:var(--gold)">About</div>
-    <h2 class="section-title">Making colour feel like home</h2>
-
-    <p style="opacity:.8;line-height:1.7">
-      Based in Norfolk County, Ontario, I create acrylic paintings inspired by emotion, nature, and quiet everyday moments.
-    </p>
-
-    <div class="about-mediums">
-      <span>Acrylic Painting</span>
-      <span>Canvas Work</span>
-      <span>Commissions</span>
+  <div class="about-portrait">
+    <div class="about-portrait-inner">
+      <div class="about-portrait-tag">
+        <div class="about-portrait-name">Karen Stewart</div>
+        <div class="about-portrait-title">Artist · Norfolk County, Ontario</div>
+      </div>
     </div>
+  </div>
+  <div>
+    <div class="section-label">About the Artist</div>
+    <h2 class="section-title">Making colour feel like home</h2>
+    <div class="about-quote">
+      <p>"I paint the way I feel — loudly, warmly, and with as much colour as possible."</p>
+    </div>
+    <p class="section-subtitle">
+      Based in beautiful Norfolk County, Ontario, I paint bold acrylics on canvas — birds, animals, and everyday moments, always expressive, always a little bit wild.
+    </p>
+    <p class="section-subtitle" style="margin-top: -1.5rem;">
+      Whether you're looking for a statement piece for your living room or a small painting to brighten up a shelf — you're in the right place.
+    </p>
+    <div class="about-mediums">
+      <span class="medium-tag">Acrylic Painting</span>
+      <span class="medium-tag">Mixed Media</span>
+      <span class="medium-tag">Commissions</span>
+    </div>
+    <a href="#contact" class="btn-primary">Request a Commission</a>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label">Contact</div>
-  <h2 class="section-title">Let’s make something together</h2>
-
+  <div class="section-label">Get in Touch</div>
+  <h2 class="section-title">Let's make something together</h2>
   <p class="section-subtitle">
-    To purchase artwork, contact:<br>
-    <a href="mailto:stewartk1@icloud.com">stewartk1@icloud.com</a><br><br>
-
-    Instagram: <a href="https://www.instagram.com/k_dot_stew/">@k_dot_stew</a><br>
-    Facebook: <a href="https://www.facebook.com/karen.stewie.3">Karen Stewart</a>
+    Commissions open! Custom pieces, gift ideas, event art — Karen loves working with people to create something truly personal.
   </p>
-
-  <p style="color:var(--muted)">
-    Upcoming: Port Dover Studio Tour<br>
-    Gallery: Port Stanley Art Emporium
-  </p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="contact-icon">🎨</div>
+      <div class="contact-card-title">Visit my Art</div>
+      <div class="contact-card-desc">Catch me at the <strong>Port Dover Studio Tour</strong> (Stop 1, July 11–12) or see my work on display at the <strong>Art Emporium in Port Stanley</strong>. Come drop by and see the pieces in person!</div>
+      <a href="mailto:stewartk1@icloud.com">Get a quote →</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📦</div>
+      <div class="contact-card-title">Commissions</div>
+      <div class="contact-card-desc">Have something specific in mind? Custom acrylic commissions are open — let's chat.</div>
+      <a href="mailto:stewartk1@icloud.com">Enquire →</a>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">💬</div>
+      <div class="contact-card-title">Say Hello</div>
+      <div class="contact-card-desc">Questions about a piece, shipping, or just want to connect? Reach out by email, or find me on Instagram / Facebook.</div>
+      <a href="mailto:stewartk1@icloud.com">Send a message →</a>
+      <!-- TODO: add your Instagram / Facebook links here, e.g.
+      <a href="https://instagram.com/yourhandle" target="_blank">Instagram</a>
+      <a href="https://facebook.com/yourpage" target="_blank">Facebook</a>
+      -->
+    </div>
+  </div>
 </section>
 
-<footer>© 2026 Karen Stewart</footer>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Karen<span> Stewart</span> Art</div>
+  <ul class="footer-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Karen Stewart. All rights reserved.</p>
+</footer>
 
 <script>
-let i=0;
-const slides=document.querySelectorAll(".hero-slide");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
 
-setInterval(()=>{
-  slides[i].classList.remove("active");
-  i=(i+1)%slides.length;
-  slides[i].classList.add("active");
-},3000);
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // ---- HERO PHOTO CYCLE ----
+  // Cycles through the gallery. Drop matching photos into an "images" folder
+  // (named to match each slug below) and they'll appear automatically; until
+  // then a colour gradient stands in for each piece.
+  const HERO_ART = [
+    { slug: "the glorious robin", title: "The Glorious Robin", size: "12 × 12", price: 200, status: "available", collections: [] },
+  { slug: "signs of spring", title: "Signs of Spring", size: "12 × 16", price: 250, status: "available", collections: [] },
+  { slug: "windows down", title: "Windows Down", size: "9 × 12", price: 100, status: "available", collections: [] },
+  { slug: "a view from cobh", title: "A View From Cobh", size: "12 × 16", price: 140, status: "available", collections: [] },
+  { slug: "spring poppies", title: "Spring Poppies", size: "12 × 16", price: 140, status: "available", collections: [] },
+  { slug: "spring blooms", title: "Spring Blooms", size: "12 × 16", price: 140, status: "available", collections: [] },
+  { slug: "herring loss", title: "Herring Loss", size: "12 × 12", price: 100, status: "available", collections: [] },
+
+  { slug: "triptych 1", title: "Triptych 1", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
+  { slug: "triptych 2", title: "Triptych 2", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
+  { slug: "triptych 3", title: "Triptych 3", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
+
+  { slug: "lazy boiiii", title: "Lazy Boiiiii", size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
+
+  { slug: "quail", title: "Quail", size: "12 × 12", price: 100, status: "available", collections: [] },
+  { slug: "monday", title: "Monday", size: "10 × 12", price: 140, status: "available", collections: ["cats"] },
+  { slug: "zebra finch pair", title: "Zebra Finch Pair", size: "10 × 12", price: 100, status: "available", collections: [] },
+
+  { slug: "pond life", title: "Pond Life", size: "16 × 20", price: 200, status: "available", collections: [] },
+
+  { slug: "a wee bonbon", title: "A Wee Bonbon", size: "10 × 10", price: 80, status: "available", collections: [] },
+  { slug: "at rest", title: "At Rest", size: "11 × 14", price: 100, status: "available", collections: [] },
+  { slug: "birthday bouquet", title: "Birthday Bouquet", size: "12 × 12", price: 100, status: "available", collections: [] },
+
+  { slug: "dick and janes", title: "Dick and Jane's", size: "12 × 16", price: 140, status: "available", collections: [] },
+
+  { slug: "flight map", title: "Flight Map", size: "11 × 14", price: 100, status: "available", collections: [] },
+  { slug: "hiding in the dogwood", title: "Hiding in the Dogwood", size: "12 × 12", price: 100, status: "available", collections: [] },
+  { slug: "life in the shadows", title: "Life in the Shadows", size: "12 × 12", price: 100, status: "available", collections: [] },
+
+  { slug: "white cat", title: "White Cat", size: "12 × 16", price: 120, status: "available", collections: ["cats"] }
+];
+
+  const layerA = document.getElementById('heroLayerA');
+  const layerB = document.getElementById('heroLayerB');
+  const caption = document.getElementById('heroCaption');
+  let heroIndex = 0;
+  let showingA = true;
+
+  function setLayer(el, art) {
+    el.style.backgroundImage = `url('images/${art.slug}.webp'), ${art.gradient}`;
+  }
+
+  if (layerA && layerB) {
+    setLayer(layerA, HERO_ART[0]);
+    caption.textContent = HERO_ART[0].title;
+
+    setInterval(() => {
+      heroIndex = (heroIndex + 1) % HERO_ART.length;
+      const nextArt = HERO_ART[heroIndex];
+      const incoming = showingA ? layerB : layerA;
+      const outgoing = showingA ? layerA : layerB;
+      setLayer(incoming, nextArt);
+      incoming.classList.add('active');
+      outgoing.classList.remove('active');
+      caption.textContent = nextArt.title;
+      showingA = !showingA;
+    }, 4000);
+  }
 </script>
 
 </body>
