@@ -349,6 +349,43 @@
   } else {
     renderGrid('all');
   }
+
+      // ---- LIGHTBOX ----
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+
+    function openLightbox(slug, title) {
+      lightboxImage.src = `art/${encodeURIComponent(slug)}.webp`;
+      lightboxImage.alt = title;
+      lightboxTitle.textContent = title;
+      lightbox.classList.add("active");
+    }
+
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+    }
+
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      }
+    });
 </script>
 
   <!-- LIGHTBOX -->

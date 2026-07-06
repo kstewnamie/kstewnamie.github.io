@@ -411,7 +411,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
+      grid-auto-rows: 260px;
       gap: 1.5rem;
     }
 
@@ -428,6 +428,7 @@
 
     .gallery-item.featured {
       grid-column: span 2;
+      grid-row: span 2;
     }
 
     .gallery-thumb {
@@ -435,9 +436,25 @@
       overflow: hidden;
     }
 
-    .gallery-item.featured .gallery-thumb { height: 360px; }
-    .gallery-thumb { height: 220px; background-size: cover; background-position: center; }
+    .gallery-item.featured .gallery-thumb {
+      height: 100%;
+    }
 
+    .gallery-thumb {
+      height: 100%;
+      min-height: 220px;
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .gallery-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-thumb {
+      flex: 1;
+    }
     .g1 { background: linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); }
     .g2 { background: linear-gradient(135deg, #2A8C7A, #6A9E7F); }
     .g3 { background: linear-gradient(135deg, #E8614A, #D4A84B); }
@@ -1133,6 +1150,43 @@
       document.getElementById("catsImage"),
       "cats"
     );
+
+        // ---- LIGHTBOX ----
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+
+    function openLightbox(slug, title) {
+      lightboxImage.src = `art/${encodeURIComponent(slug)}.webp`;
+      lightboxImage.alt = title;
+      lightboxTitle.textContent = title;
+      lightbox.classList.add("active");
+    }
+
+
+    function closeLightbox() {
+      lightbox.classList.remove("active");
+    }
+
+
+    lightboxClose.addEventListener("click", closeLightbox);
+
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeLightbox();
+      }
+    });
 </script>
 
   <!-- LIGHTBOX -->
