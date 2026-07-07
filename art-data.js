@@ -20,33 +20,29 @@ const ARTWORK = [
   { slug: "spring poppies",         title: "Spring Poppies",         size: "12 × 16", price: 140, status: "available", collections: [] },
   { slug: "spring blooms",          title: "Spring Blooms",          size: "12 × 16", price: 140, status: "available", collections: [] },
   { slug: "herring loss",           title: "Herring Loss",           size: "12 × 12", price: 100, status: "available", collections: [] },
-
   { slug: "triptych 1",             title: "Triptych 1",             size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
   { slug: "triptych 2",             title: "Triptych 2",             size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
   { slug: "triptych 3",             title: "Triptych 3",             size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-
   { slug: "lazy boiiiii",           title: "Lazy Boiiiii",           size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
-
   { slug: "quail",                  title: "Quail",                  size: "12 × 12", price: 100, status: "available", collections: [] },
   { slug: "monday",                 title: "Monday",                 size: "10 × 12", price: 140, status: "available", collections: ["cats"] },
   { slug: "zebra finch pair",       title: "Zebra Finch Pair",       size: "10 × 12", price: 100, status: "available", collections: [] },
-
   { slug: "pond life",              title: "Pond Life",              size: "16 × 20", price: 200, status: "available", collections: [] },
-
   { slug: "a wee bonbon",           title: "A Wee Bonbon",           size: "10 × 10", price: 80,  status: "available", collections: [] },
   { slug: "at rest",                title: "At Rest",                size: "11 × 14", price: 100, status: "available", collections: [] },
   { slug: "birthday bouquet",       title: "Birthday Bouquet",       size: "12 × 12", price: 100, status: "available", collections: [] },
-
   { slug: "dick and janes",         title: "Dick and Jane's?",       size: "12 × 16", price: 140, status: "available", collections: [] },
-
   { slug: "flight map",             title: "Flight Map",             size: "11 × 14", price: 100, status: "available", collections: [] },
-  { slug: "hiding in the dogwood",  title: "Hiding in the Dogwood",   size: "12 × 12", price: 100, status: "available", collections: [] },
+  { slug: "hiding in the dogwood",  title: "Hiding in the Dogwood",  size: "12 × 12", price: 100, status: "available", collections: [] },
   { slug: "life in the shadows",    title: "Life in the Shadows",    size: "12 × 12", price: 100, status: "available", collections: [] },
-
   { slug: "white cat",              title: "White Cat",              size: "12 × 16", price: 120, status: "available", collections: ["cats"] },
-  { slug: "maud",                   title: "Maud",              size: "12 × 12", price: 100, status: "available", collections: [] },
-  { slug: "beatrice",               title: "Beatrice",              size: "10 x 10", price: 80, status: "available", collections: [] }
+  { slug: "maud",                   title: "Maud",                   size: "12 × 12", price: 100, status: "available", collections: [] },
+  { slug: "beatrice",               title: "Beatrice",               size: "10 x 10", price: 80,  status: "available", collections: [] },
+  { slug: "on the fence",           title: "On the Fence",           size: "11 x 14", price: 75,  status: "available", collections: [] },
+  { slug: "dinner date",            title: "Dinner Date",            size: "11 x 14", price: 75,  status: "available", collections: [] },
+  { slug: "harbour days",           title: "Harbour Days",           size: "24 x 24", price: 300, status: "available", collections: [] }
 ];
+
 
 /* Helper: get the display medium for a piece, falling back to the default. */
 function getMedium(art) {
