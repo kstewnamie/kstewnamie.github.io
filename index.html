@@ -1123,7 +1123,7 @@
   document.querySelectorAll('.gallery-thumb img').forEach(img => {
     img.addEventListener('load', () => resizeGridItem(img.closest('.gallery-item')));
   });
-  
+
   // ---- HERO STATS (driven by art-data.js so they never go stale) ----
   document.getElementById('statWorks').textContent = ARTWORK.length;
   document.getElementById('statCollections').textContent = countCollections();
@@ -1134,8 +1134,8 @@
   { slug: "signs of spring", title: "Signs of Spring", gradient: "linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A)" },
   { slug: "windows down", title: "Windows Down", gradient: "linear-gradient(135deg, #2A8C7A, #6A9E7F)" },
   { slug: "spring poppies", title: "Spring Poppies", gradient: "linear-gradient(135deg, #D4607A, #8B6BB1)" },
-  { slug: "lazy boiiiii", title: "Lazy Boiiiii", gradient: "linear-gradient(135deg, #D4607A, #E8614A)" },
-  { slug: "white cat", title: "White Cat", gradient: "linear-gradient(160deg, #8B6BB1, #2A8C7A)" }
+  { slug: "beatrice", title: "Beatrice", gradient: "linear-gradient(135deg, #D4607A, #E8614A)" },
+  { slug: "on the fence", title: "On the Fence", gradient: "linear-gradient(160deg, #8B6BB1, #2A8C7A)" }
 ];
 
   const layerA = document.getElementById('heroLayerA');
