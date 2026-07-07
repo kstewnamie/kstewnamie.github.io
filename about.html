@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Karen Stewart — K.Stew Art</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF6EF; --warm-white: #FFFDF9; --charcoal: #1C1A18; --ink: #2E2B26;
+      --muted: #7A756C; --coral: #E8614A; --coral-light: #FDEAE6; --teal: #2A8C7A;
+      --teal-light: #E0F5F1; --gold: #D4A84B; --gold-light: #FDF5E3;
+      --lavender: #8B6BB1; --lavender-light: #F0EAF8; --rose: #D4607A; --rose-light: #FDEAF0;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(250,246,239,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(28,26,24,0.08);
+    }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--charcoal); text-decoration: none; letter-spacing: -0.02em; }
+    .nav-logo span { color: var(--coral); font-style: italic; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.9rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--coral); }
+    .nav-cta { background: var(--charcoal); color: var(--cream) !important; padding: 0.55rem 1.4rem; border-radius: 100px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--coral) !important; color: white !important; }
+
+    .breadcrumb { font-size: 0.8rem; color: var(--muted); margin: 140px 5rem 0; }
+    .breadcrumb a { color: var(--coral); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+
+    #about {
+      background: var(--charcoal);
+      color: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      padding: 3rem 5rem 6rem;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      color: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      color: var(--cream);
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 100%;
+      margin-bottom: 1.5rem;
+      color: rgba(250,246,239,0.65);
+    }
+
+    .about-portrait {
+      position: relative;
+      background-image: url("about.webp");
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      min-height: 520px;
+      overflow: hidden;
+    }
+
+    .about-portrait-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 2rem;
+    }
+
+    .about-portrait-tag {
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(8px);
+      padding: 0.8rem 1.2rem;
+      border-radius: 10px;
+      width: 100%;
+    }
+
+    .about-portrait-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .about-portrait-title {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+    }
+
+    .about-quote {
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      border-left: 3px solid var(--gold);
+      background: rgba(212,168,75,0.08);
+      border-radius: 0 10px 10px 0;
+    }
+
+    .about-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: rgba(250,246,239,0.85);
+      line-height: 1.6;
+    }
+
+    .about-mediums {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1.5rem 0;
+    }
+
+    .medium-tag {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border: 1px solid rgba(250,246,239,0.2);
+      color: rgba(250,246,239,0.8);
+      transition: all 0.2s;
+    }
+
+    .medium-tag:hover {
+      background: rgba(250,246,239,0.1);
+      border-color: rgba(250,246,239,0.4);
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--coral);
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* WHERE TO FIND ME */
+    .find-me {
+      padding: 5rem;
+      background: var(--warm-white);
+    }
+
+    .find-me .section-label { color: var(--coral); }
+    .find-me .section-title { color: var(--charcoal); }
+
+    .find-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin-top: 2.5rem;
+    }
+
+    .find-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid rgba(28,26,24,0.07);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    .find-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .find-card-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    footer { background: var(--charcoal); color: rgba(250,246,239,0.5); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--cream); }
+    .footer-logo span { color: var(--coral); font-style: italic; }
+    .footer-links { display: flex; gap: 2rem; list-style: none; }
+    .footer-links a { color: rgba(250,246,239,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--cream); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .breadcrumb { margin: 110px 2rem 0; }
+      #about { grid-template-columns: 1fr; padding: 2rem 2rem 4rem; gap: 2.5rem; }
+      .find-me { padding: 3rem 2rem; }
+      .find-cards { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">K.Stew<span> Art</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#shop">Shop</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb"><a href="index.html">Home</a> › About</div>
+
+<section id="about">
+  <div class="about-portrait">
+    <div class="about-portrait-inner">
+      <div class="about-portrait-tag">
+        <div class="about-portrait-name">Karen Stewart</div>
+        <div class="about-portrait-title">Artist · Norfolk County, Ontario</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-label">About the Artist</div>
+    <h2 class="section-title">Making colour feel like home</h2>
+    <div class="about-quote">
+      <p>"I paint the way I feel; each canvas loud, warm, and with as much colour as possible."</p>
+    </div>
+    <p class="section-subtitle">
+      Based in beautiful Norfolk County, Ontario, I paint bold acrylics on canvas of birds, animals, and everyday moments. I aim for my artwork to always be expressive and always a little bit wild.
+    </p>
+    <p class="section-subtitle">
+      Whether you're looking for a statement piece for your living room or a small painting to brighten up a shelf, you're in the right place.
+    </p>
+    <div class="about-mediums">
+      <span class="medium-tag">Acrylic Painting</span>
+      <span class="medium-tag">Mixed Media</span>
+      <span class="medium-tag">Commissions</span>
+    </div>
+    <a href="index.html#contact-form" class="btn-primary">Request a Commission</a>
+  </div>
+</section>
+
+<section class="find-me">
+  <div class="section-label">Where to Find Me</div>
+  <h2 class="section-title">Come see the work in person</h2>
+  <div class="find-cards">
+    <div class="find-card">
+      <div class="find-card-title">🎪 Port Dover Studio Tour</div>
+      <div class="find-card-desc">Stop 1 on the tour, July 11–12. Come by and see the paintings up close, chat about commissions, and pick up a piece straight from the studio.</div>
+    </div>
+    <div class="find-card">
+      <div class="find-card-title">🖼️ Port Stanley Art Emporium</div>
+      <div class="find-card-desc">A rotating selection of originals is on display at the Art Emporium in Port Stanley — a great spot to see the work any time.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">K.Stew<span> Art</span></div>
+  <ul class="footer-links">
+    <li><a href="index.html#shop">Shop</a></li>
+    <li><a href="index.html#gallery">Gallery</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+  <p>© 2026 Karen Stewart. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

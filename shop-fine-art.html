@@ -101,7 +101,7 @@
       footer { flex-direction: column; gap: 1rem; padding: 2rem; text-align: center; }
     }
     @media (max-width: 560px) { .shop-grid { grid-template-columns: 1fr; } }
-    
+
     .product-card,
     .category-card,
     .gallery-item,
@@ -156,8 +156,6 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
     }
-
-    
   </style>
 </head>
 <body>
@@ -167,7 +165,7 @@
   <ul class="nav-links">
     <li><a href="index.html#shop" class="active">Shop</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#contact">Commissions</a></li>
     <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
   </ul>
@@ -201,60 +199,24 @@
     <h3>Want something made just for you?</h3>
     <p>Karen takes commissions for custom acrylic paintings — portraits, pets, landscapes, and everything in between. Reach out to get started.</p>
   </div>
-  <a href="index.html#contact" class="btn-gold">Request a Commission</a>
+  <a href="index.html#contact-form" class="btn-gold">Request a Commission</a>
 </div>
 
 <footer>
-  <div class="footer-logo">K.Stew</span> Art</div>
+  <div class="footer-logo">K.Stew<span> Art</span></div>
   <ul class="footer-links">
     <li><a href="index.html#shop">Shop</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
-    <li><a href="index.html#about">About</a></li>
+    <li><a href="about.html">About</a></li>
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
   <p>© 2026 Karen Stewart. All rights reserved.</p>
 </footer>
 
+<!-- Shared artwork data (single source of truth — see art-data.js) -->
+<script src="art-data.js"></script>
+
 <script>
-  // ---- ARTWORK DATA ----
-  // Each piece expects an image at art/<slug>.webp (or .jpg). If the file
-  // isn't there yet, a gradient placeholder shows instead — just drop photos
-  // into an "art" folder next to this file, named to match the slug, and
-  // they'll appear automatically.
-  const ARTWORK = [
-  { slug: "the glorious robin", title: "The Glorious Robin", size: "12 × 12", price: 200, status: "available", collections: [] },
-  { slug: "signs of spring", title: "Signs of Spring", size: "12 × 16", price: 250, status: "available", collections: [] },
-  { slug: "windows down", title: "Windows Down", size: "9 × 12", price: 100, status: "available", collections: [] },
-  { slug: "a view from cobh", title: "A View From Cobh", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "spring poppies", title: "Spring Poppies", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "spring blooms", title: "Spring Blooms", size: "12 × 16", price: 140, status: "available", collections: [] },
-  { slug: "herring loss", title: "Herring Loss", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "triptych 1", title: "Triptych 1", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-  { slug: "triptych 2", title: "Triptych 2", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-  { slug: "triptych 3", title: "Triptych 3", size: "12 × 12", price: 100, status: "available", collections: ["triptych"] },
-
-  { slug: "lazy boiiiii", title: "Lazy Boiiiii", size: "12 × 16", price: 140, status: "available", collections: ["cats"] },
-
-  { slug: "quail", title: "Quail", size: "12 × 12", price: 100, status: "available", collections: [] },
-  { slug: "monday", title: "Monday", size: "10 × 12", price: 140, status: "available", collections: ["cats"] },
-  { slug: "zebra finch pair", title: "Zebra Finch Pair", size: "10 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "pond life", title: "Pond Life", size: "16 × 20", price: 200, status: "available", collections: [] },
-
-  { slug: "a wee bonbon", title: "A Wee Bonbon", size: "10 × 10", price: 80, status: "available", collections: [] },
-  { slug: "at rest", title: "At Rest", size: "11 × 14", price: 100, status: "available", collections: [] },
-  { slug: "birthday bouquet", title: "Birthday Bouquet", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "dick and janes", title: "Dick and Jane's?", size: "12 × 16", price: 140, status: "available", collections: [] },
-
-  { slug: "flight map", title: "Flight Map", size: "11 × 14", price: 100, status: "available", collections: [] },
-  { slug: "hiding in the dogwood", title: "Hiding in the Dogwood", size: "12 × 12", price: 100, status: "available", collections: [] },
-  { slug: "life in the shadows", title: "Life in the Shadows", size: "12 × 12", price: 100, status: "available", collections: [] },
-
-  { slug: "white cat", title: "White Cat", size: "12 × 16", price: 120, status: "available", collections: ["cats"] }
-];
-
   const GRADIENTS = [
     "linear-gradient(135deg, #8B6BB1 0%, #D4607A 60%, #E8614A 100%)",
     "linear-gradient(160deg, #D4607A 0%, #8B6BB1 70%, #2A8C7A 100%)",
@@ -292,9 +254,10 @@
       card.dataset.title = art.title;
 
       let priceHTML, buttonHTML;
+      const enquireHref = `index.html?subject=${encodeURIComponent('Enquiry: ' + art.title)}#contact-form`;
       if (art.status === "available" || art.status === "inquire") {
         priceHTML = art.price ? `<div class="product-price">$${art.price}</div>` : `<div class="product-price" style="font-size:0.95rem;">Price on request</div>`;
-        buttonHTML = `<a class="add-to-cart" href="mailto:stewartk1@icloud.com?subject=${encodeURIComponent('Enquiry: ' + art.title)}">Enquire</a>`;
+        buttonHTML = `<a class="add-to-cart" href="${enquireHref}">Enquire</a>`;
       } else {
         const label = art.status === "sold" ? "Sold" : "Not for Sale";
         priceHTML = `<div class="product-price" style="color:var(--muted);font-size:0.95rem;">${label}</div>`;
@@ -303,12 +266,12 @@
 
       card.innerHTML = `
         <div class="product-thumb">
-          <div class="product-thumb-inner" style="background-image:url('art/${art.slug}.webp'), ${gradient};"></div>
+          <div class="product-thumb-inner" style="background-image:url('art/${encodeURIComponent(art.slug)}.webp'), ${gradient};"></div>
           <span class="product-badge ${cfg.badgeClass}">${cfg.badge}</span>
         </div>
         <div class="product-info">
           <div class="product-name">${art.title}</div>
-          <div class="product-medium">${art.medium}${art.note ? " · " + art.note : ""}</div>
+          <div class="product-medium">${getMedium(art)}${art.note ? " · " + art.note : ""}</div>
           <div class="product-footer">
             <div>
               ${priceHTML}
@@ -319,9 +282,13 @@
         </div>
       `;
       grid.appendChild(card);
-      card.addEventListener("click", () => {
-      openLightbox(art.slug, art.title);
-});
+
+      // Clicking the card opens the lightbox; clicking the Enquire link
+      // inside it should still navigate normally, not trigger the lightbox.
+      card.addEventListener("click", (e) => {
+        if (e.target.closest('.add-to-cart')) return;
+        openLightbox(art.slug, art.title);
+      });
     });
 
     resultsCount.textContent = `Showing ${items.length} work${items.length !== 1 ? "s" : ""}`;
@@ -350,42 +317,36 @@
     renderGrid('all');
   }
 
-      // ---- LIGHTBOX ----
+  // ---- LIGHTBOX ----
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightboxImage");
+  const lightboxTitle = document.getElementById("lightboxTitle");
+  const lightboxClose = document.getElementById("lightboxClose");
 
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.getElementById("lightboxImage");
-    const lightboxTitle = document.getElementById("lightboxTitle");
-    const lightboxClose = document.getElementById("lightboxClose");
+  function openLightbox(slug, title) {
+    lightboxImage.src = `art/${encodeURIComponent(slug)}.webp`;
+    lightboxImage.alt = title;
+    lightboxTitle.textContent = title;
+    lightbox.classList.add("active");
+  }
 
+  function closeLightbox() {
+    lightbox.classList.remove("active");
+  }
 
-    function openLightbox(slug, title) {
-      lightboxImage.src = `art/${encodeURIComponent(slug)}.webp`;
-      lightboxImage.alt = title;
-      lightboxTitle.textContent = title;
-      lightbox.classList.add("active");
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
     }
+  });
 
-
-    function closeLightbox() {
-      lightbox.classList.remove("active");
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeLightbox();
     }
-
-
-    lightboxClose.addEventListener("click", closeLightbox);
-
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeLightbox();
-      }
-    });
+  });
 </script>
 
   <!-- LIGHTBOX -->
