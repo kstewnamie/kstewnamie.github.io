@@ -433,8 +433,13 @@
       position: relative;
       overflow: hidden;
       width: 100%;
-      background-size: cover;
-      background-position: center;
+      line-height: 0;
+    }
+
+    .gallery-thumb img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .g1 { background: linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); }
@@ -971,7 +976,8 @@
   </div>
   <div class="gallery-grid">
     <div class="gallery-item featured fade-up" onclick="openLightbox('flight map','Flight Map')">
-      <div class="gallery-thumb" style="background-image:url('art/flight map.webp'), linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A); background-size: cover, cover; aspect-ratio: 11 / 14;">
+      <div class="gallery-thumb" style="background: linear-gradient(135deg, #8B6BB1, #D4607A, #E8614A);">
+        <img src="art/flight map.webp" alt="Flight Map" loading="lazy">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -983,7 +989,8 @@
       </div>
     </div>
     <div class="gallery-item fade-up" onclick="openLightbox('lazy boiiiii','Lazy Boiiiii')">
-      <div class="gallery-thumb" style="background-image:url('art/lazy boiiiii.webp'), linear-gradient(135deg, #2A8C7A, #6A9E7F); background-size: cover, cover; aspect-ratio: 3 / 4;">
+      <div class="gallery-thumb" style="background: linear-gradient(135deg, #2A8C7A, #6A9E7F);">
+        <img src="art/lazy boiiiii.webp" alt="Lazy Boiiiii" loading="lazy">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -995,7 +1002,8 @@
       </div>
     </div>
     <div class="gallery-item fade-up" onclick="openLightbox('the glorious robin','The Glorious Robin')">
-      <div class="gallery-thumb" style="background-image:url('art/the glorious robin.webp'), linear-gradient(135deg, #E8614A, #D4A84B); background-size: cover, cover; aspect-ratio: 1 / 1;">
+      <div class="gallery-thumb" style="background: linear-gradient(135deg, #E8614A, #D4A84B);">
+        <img src="art/the glorious robin.webp" alt="The Glorious Robin" loading="lazy">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -1007,7 +1015,8 @@
       </div>
     </div>
     <div class="gallery-item fade-up" onclick="openLightbox('quail','Quail')">
-      <div class="gallery-thumb" style="background-image:url('art/quail.webp'), linear-gradient(135deg, #D4607A, #8B6BB1); background-size: cover, cover; aspect-ratio: 1 / 1;">
+      <div class="gallery-thumb" style="background: linear-gradient(135deg, #D4607A, #8B6BB1);">
+        <img src="art/quail.webp" alt="Quail" loading="lazy">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
@@ -1019,7 +1028,8 @@
       </div>
     </div>
     <div class="gallery-item fade-up" onclick="openLightbox('signs of spring','Signs of Spring')">
-      <div class="gallery-thumb" style="background-image:url('art/signs of spring.webp'), linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A); background-size: cover, cover; aspect-ratio: 3 / 4;">
+      <div class="gallery-thumb" style="background: linear-gradient(135deg, #D4A84B, #E8A87C, #E8614A);">
+        <img src="art/signs of spring.webp" alt="Signs of Spring" loading="lazy">
         <div class="gallery-overlay"></div>
       </div>
       <div class="gallery-info">
