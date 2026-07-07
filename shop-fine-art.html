@@ -166,8 +166,8 @@
     <li><a href="index.html#shop" class="active">Shop</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html#contact">Commissions</a></li>
-    <li><a href="index.html#contact" class="nav-cta">Contact</a></li>
+    <li><a href="contact.html">Commissions</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
   </ul>
 </nav>
 
@@ -199,7 +199,7 @@
     <h3>Want something made just for you?</h3>
     <p>Karen takes commissions for custom acrylic paintings — portraits, pets, landscapes, and everything in between. Reach out to get started.</p>
   </div>
-  <a href="index.html#contact-form" class="btn-gold">Request a Commission</a>
+  <a href="contact.html" class="btn-gold">Request a Commission</a>
 </div>
 
 <footer>
@@ -208,10 +208,17 @@
     <li><a href="index.html#shop">Shop</a></li>
     <li><a href="index.html#gallery">Gallery</a></li>
     <li><a href="about.html">About</a></li>
-    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
   <p>© 2026 Karen Stewart. All rights reserved.</p>
 </footer>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">×</button>
+    <img id="lightboxImage" src="" alt="">
+    <div class="lightbox-title" id="lightboxTitle"></div>
+  </div>
 
 <!-- Shared artwork data (single source of truth — see art-data.js) -->
 <script src="art-data.js"></script>
@@ -254,7 +261,7 @@
       card.dataset.title = art.title;
 
       let priceHTML, buttonHTML;
-      const enquireHref = `index.html?subject=${encodeURIComponent('Enquiry: ' + art.title)}#contact-form`;
+      const enquireHref = `contact.html?subject=${encodeURIComponent('Enquiry: ' + art.title)}#contact-form`;
       if (art.status === "available" || art.status === "inquire") {
         priceHTML = art.price ? `<div class="product-price">$${art.price}</div>` : `<div class="product-price" style="font-size:0.95rem;">Price on request</div>`;
         buttonHTML = `<a class="add-to-cart" href="${enquireHref}">Enquire</a>`;
@@ -348,13 +355,6 @@
     }
   });
 </script>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" id="lightboxClose">×</button>
-    <img id="lightboxImage" src="" alt="">
-    <div class="lightbox-title" id="lightboxTitle"></div>
-  </div>
 
 </body>
 </html>
