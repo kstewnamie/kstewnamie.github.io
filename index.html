@@ -402,7 +402,7 @@
     .cat-fine-art .category-badge { background: var(--lavender-light); color: var(--lavender); }
     .cat-triptych .category-badge { background: var(--teal-light); color: var(--teal); }
     .cat-cats .category-badge { background: var(--gold-light); color: #9A6F0A; }
-    .cat-feathered_friends .category-badge { background: var(--teal-light); color: var(--pink); }
+    .cat-feathered_friends .category-badge { background: var(--coral-light); color: var(--coral); }
 
     /* FEATURED WORKS */
     #gallery {
@@ -953,7 +953,7 @@
       <div class="category-desc">
         A three-panel set.
       </div>
-      <span class="category-badge" id="'triptychBadge">Works</span>
+      <span class="category-badge" id="triptychBadge">Works</span>
     </div>
   </a>
   <a href="shop-fine-art.html?collection=cats" class="category-card cat-cats">
@@ -1195,7 +1195,7 @@
   setCategoryImage(document.getElementById("catsImage"), "cats");
   setCategoryImage(document.getElementById("feathered_friendsImage"), "feathered_friends");
 
-  document.getElementById('tripBadge').textContent  = slugsInCollection('triptych').length + ' Works';
+  document.getElementById('triptychBadge').textContent  = slugsInCollection('triptych').length + ' Works';
   document.getElementById('catsBadge').textContent  = slugsInCollection('cats').length + ' Works';
   document.getElementById('feathered_friendsBadge').textContent = slugsInCollection('feathered_friends').length + ' Works';
 
