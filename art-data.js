@@ -43,7 +43,9 @@ const ARTWORK = [
   { slug: "hiding in the dogwood",  title: "Hiding in the Dogwood",   size: "12 × 12", price: 100, status: "available", collections: [] },
   { slug: "life in the shadows",    title: "Life in the Shadows",    size: "12 × 12", price: 100, status: "available", collections: [] },
 
-  { slug: "white cat",              title: "White Cat",              size: "12 × 16", price: 120, status: "available", collections: ["cats"] }
+  { slug: "white cat",              title: "White Cat",              size: "12 × 16", price: 120, status: "available", collections: ["cats"] },
+  { slug: "maud",                   title: "Maud",              size: "12 × 12", price: 100, status: "available", collections: [] },
+  { slug: "beatrice",               title: "Beatrice",              size: "10 x 10", price: 80, status: "available", collections: [] }
 ];
 
 /* Helper: get the display medium for a piece, falling back to the default. */
