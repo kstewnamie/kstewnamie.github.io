@@ -70,7 +70,7 @@
 
     .product-badge { position: absolute; top: 12px; left: 12px; padding: 0.3rem 0.75rem; border-radius: 100px; font-size: 0.7rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
     .badge-original { background: var(--charcoal); color: var(--cream); }
-    .badge-sold { background: rgba(28,26,24,0.5); color: white; }
+    .badge-sold { background: #C0392B; color: white; }
     .badge-gift { background: var(--rose-light); color: var(--rose); }
     .badge-commission { background: var(--teal-light); color: var(--teal); }
     .badge-inquire { background: var(--gold-light); color: #9A6F0A; }
@@ -84,7 +84,8 @@
     .add-to-cart { padding: 0.45rem 1.1rem; background: var(--charcoal); color: var(--cream); border: none; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
     .add-to-cart:hover { background: var(--coral); }
     .add-to-cart.disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
-
+    .add-to-cart.sold-btn { background: #C0392B; opacity: 1; }
+    
     .commission-banner { margin: 0 5rem 5rem; padding: 3rem 3.5rem; background: var(--charcoal); border-radius: 20px; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center; }
     .commission-banner h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--cream); margin-bottom: 0.5rem; }
     .commission-banner p { color: rgba(250,246,239,0.6); font-size: 0.95rem; line-height: 1.6; }
@@ -278,8 +279,9 @@
         buttonHTML = `<a class="add-to-cart" href="${enquireHref}">Enquire</a>`;
       } else {
         const label = art.status === "sold" ? "Sold" : "Not for Sale";
+        const soldClass = art.status === "sold" ? " sold-btn" : "";
         priceHTML = `<div class="product-price" style="color:var(--muted);font-size:0.95rem;">${label}</div>`;
-        buttonHTML = `<button class="add-to-cart disabled" disabled>${label}</button>`;
+        buttonHTML = `<button class="add-to-cart disabled${soldClass}" disabled>${label}</button>`;
       }
 
       card.innerHTML = `

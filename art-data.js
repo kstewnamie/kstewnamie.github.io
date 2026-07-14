@@ -13,7 +13,7 @@
 const DEFAULT_MEDIUM = "Acrylic on Canvas";
 
 const ARTWORK = [
-  { slug: "the glorious robin",     title: "The Glorious Robin",     size: "12 × 12", price: 200, status: "available", collections: ["feathered_friends"] },
+  { slug: "the glorious robin",     title: "The Glorious Robin",     size: "12 × 12", price: 200, status: "sold", collections: ["feathered_friends"] },
   { slug: "signs of spring",        title: "Signs of Spring",        size: "12 × 16", price: 250, status: "available", collections: [] },
   { slug: "windows down",           title: "Windows Down",           size: "9 × 12",  price: 100, status: "available", collections: [] },
   { slug: "a view from cobh",       title: "A View From Cobh",       size: "12 × 16", price: 140, status: "available", collections: [] },

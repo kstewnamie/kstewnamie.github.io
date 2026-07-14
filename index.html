@@ -472,6 +472,23 @@
 
     .gallery-item:hover .gallery-overlay { background: rgba(28,26,24,0.15); }
 
+    .gallery-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 0.3rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: white;
+      background: var(--charcoal);
+      z-index: 2;
+    }
+
+    .gallery-badge-sold { background: #C0392B; }
+    
     .gallery-info {
       padding: 1rem 1.2rem;
     }
@@ -1143,6 +1160,32 @@
   window.addEventListener('resize', resizeAllGridItems);
   document.querySelectorAll('.gallery-thumb img').forEach(img => {
     img.addEventListener('load', () => resizeGridItem(img.closest('.gallery-item')));
+  });
+
+  // ---- FEATURED WORKS: SOLD / STATUS BADGE (driven by art-data.js) ----
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const onclickAttr = item.getAttribute('onclick') || '';
+    const match = onclickAttr.match(/openLightbox\('([^']+)'/);
+    if (!match) return;
+    const art = ARTWORK.find(a => a.slug === match[1]);
+    if (!art || art.status === 'available') return;
+
+    const label = art.status === 'sold' ? 'Sold'
+                : art.status === 'inquire' ? 'Ask About This'
+                : 'Not for Sale';
+
+    const thumb = item.querySelector('.gallery-thumb');
+    const badge = document.createElement('span');
+    badge.className = 'gallery-badge' + (art.status === 'sold' ? ' gallery-badge-sold' : '');
+    badge.textContent = label;
+    thumb.appendChild(badge);
+
+    const priceEl = item.querySelector('.gallery-price');
+    if (priceEl) {
+      priceEl.textContent = label;
+      priceEl.style.color = 'var(--muted)';
+      priceEl.style.fontSize = '0.85rem';
+    }
   });
 
   // ---- HERO STATS (driven by art-data.js so they never go stale) ----
