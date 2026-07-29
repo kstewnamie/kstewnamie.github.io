@@ -13,7 +13,7 @@
 const DEFAULT_MEDIUM = "Acrylic on Canvas";
 
 const ARTWORK = [
-  { slug: "the glorious robin",     title: "The Glorious Robin",     size: "12 × 12", price: 200, status: "sold", collections: ["feathered_friends"] },
+  { slug: "the glorious robin",     title: "The Glorious Robin",     size: "12 × 12", price: 200, status: "available", collections: ["feathered_friends"] },
   { slug: "signs of spring",        title: "Signs of Spring",        size: "12 × 16", price: 250, status: "available", collections: [] },
   { slug: "windows down",           title: "Windows Down",           size: "9 × 12",  price: 100, status: "available", collections: [] },
   { slug: "a view from cobh",       title: "A View From Cobh",       size: "12 × 16", price: 140, status: "available", collections: [] },
@@ -40,7 +40,18 @@ const ARTWORK = [
   { slug: "beatrice",               title: "Beatrice",               size: "10 x 10", price: 80,  status: "available", collections: [] },
   { slug: "on the fence",           title: "On the Fence",           size: "11 x 14", price: 75,  status: "available", collections: ["feathered_friends"] },
   { slug: "dinner date",            title: "Dinner Date",            size: "11 x 14", price: 75,  status: "available", collections: [] },
-  { slug: "harbour days",           title: "Harbour Days",           size: "24 x 24", price: 300, status: "available", collections: [] }
+  { slug: "harbour days",           title: "Harbour Days",           size: "24 x 24", price: 300, status: "available", collections: [] },
+  { slug: "tuesday",                title: "Tuesday",                size: "9 x 11",  price: 120, status: "available", collections: ["cats"] },
+  { slug: "wilbur",                 title: "Wilbur",                 size: "24 x 24", price: 200, status: "available", collections: [] },
+  { slug: "not a narrow sparrow",   title: "Not a Narrow Sparrow",   size: "8 x 8",   price: 60,  status: "available", collections: ["feathered_friends"] },
+  { slug: "orange grove",           title: "Orange Grove",           size: "12 x 12", price: 100, status: "available", collections: [] },
+  { slug: "rocky",                  title: "Rocky",                  size: "5 x 5",   price: 60,  status: "available", collections: ["feathered_friends"] },
+  { slug: "beets",                  title: "Beets",                  size: "11 x 14", price: 140, status: "available", collections: [] },
+  { slug: "fall harvest",           title: "Fall Harvest",           size: "11 x 14", price: 140, status: "available", collections: [] },
+  { slug: "napoleon and snowball",  title: "Napoleon and Snowball",  size: "24 x 24", price: 300, status: "available", collections: [] },
+  { slug: "along the shore",        title: "Along the Shore",        size: "11 x 14", price: 140, status: "available", collections: [] },
+  { slug: "lobster tank",           title: "Lobster Tank",           size: "12 x 12", price: 100, status: "available", collections: [] },
+  { slug: "fresh lobster",          title: "Fresh Lobster",          size: "12 x 24", price: 200, status: "available", collections: [] }
 ];
 
 
