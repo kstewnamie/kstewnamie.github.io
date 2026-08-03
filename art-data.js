@@ -51,7 +51,12 @@ const ARTWORK = [
   { slug: "napoleon and snowball",  title: "Napoleon and Snowball",  size: "24 x 24", price: 300, status: "available", collections: [] },
   { slug: "along the shore",        title: "Along the Shore",        size: "11 x 14", price: 140, status: "available", collections: [] },
   { slug: "lobster tank",           title: "Lobster Tank",           size: "12 x 12", price: 100, status: "available", collections: [] },
-  { slug: "fresh lobster",          title: "Fresh Lobster",          size: "12 x 24", price: 200, status: "available", collections: [] }
+  { slug: "fresh lobster",          title: "Fresh Lobster",          size: "12 x 24", price: 200, status: "available", collections: [] },
+  { slug: "mesmerized",             title: "Mesmerized",             size: "5 x 7",   price: 50,  status: "sold",      collections: ["cats"] },
+  { slug: "purr purr purr",         title: "Purr Purr Purr",         size: "5 x 7",   price: 50,  status: "sold",      collections: ["cats"] },
+  { slug: "carolina wren",          title: "Carolina Wren",          size: "5 x 7",   price: 50,  status: "available",      collections: ["feathered_friends"] },
+  { slug: "space kitty",            title: "Space Kitty",            size: "10 x 10", price: 80,  status: "sold",      collections: ["cats"] },
+  { slug: "red tufted titmouse",    title: "Red Tufted Titmouse",    size: "5 x 7",   price: 50,  status: "available",      collections: ["feathered_friends"] }
 ];
 
 
