@@ -58,7 +58,8 @@ const ARTWORK = [
   { slug: "space kitty",            title: "Space Kitty",            size: "10 x 10", price: 80,  status: "sold",      collections: ["cats"] },
   { slug: "red tufted titmouse",    title: "Red Tufted Titmouse",    size: "5 x 7",   price: 50,  status: "available", collections: ["feathered_friends"] },
   { slug: "red panda",              title: "Red Panda",              size: "9 x 12",  price: 100, status: "available", collections: [] },
-  { slug: "wednesday",              title: "Wednesday",              size: "9 x 12",  price: 120, status: "available", collections: ["cats"] }
+  { slug: "wednesday",              title: "Wednesday",              size: "9 x 12",  price: 120, status: "available", collections: ["cats"] },
+  { slug: "good boy",               title: "Good Boy",               size: "9 x 11",  price: 140, status: "available", collections: [] }
 ];
 
 
