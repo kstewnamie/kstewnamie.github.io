@@ -44,7 +44,7 @@ const ARTWORK = [
   { slug: "tuesday",                title: "Tuesday",                size: "9 x 11",  price: 120, status: "available", collections: ["cats"] },
   { slug: "wilbur",                 title: "Wilbur",                 size: "24 x 24", price: 200, status: "available", collections: [] },
   { slug: "not a narrow sparrow",   title: "Not a Narrow Sparrow",   size: "8 x 8",   price: 60,  status: "available", collections: ["feathered_friends"] },
-  { slug: "orange grove",           title: "Orange Grove",           size: "12 x 12", price: 100, status: "available", collections: [] },
+  { slug: "orange grove",           title: "Orange Grove",           size: "12 x 12", price: 100, status: "sold", collections: [] },
   { slug: "rocky",                  title: "Rocky",                  size: "5 x 5",   price: 60,  status: "available", collections: ["feathered_friends"] },
   { slug: "beets",                  title: "Beets",                  size: "11 x 14", price: 140, status: "available", collections: [] },
   { slug: "fall harvest",           title: "Fall Harvest",           size: "11 x 14", price: 140, status: "available", collections: [] },
